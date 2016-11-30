@@ -8,6 +8,6 @@ import com.online.shop.domain.ProductVO;
 public interface SellerDAO {
 
 	public abstract List<ProductVO> selectAllProduct();
-	public abstract List<ImageVO> selectMainImage();
+	public abstract List<ImageVO> selectAllImage();
 	
 } // end interface SellerDAO

@@ -34,8 +34,8 @@ public class SellerDAOImpl implements SellerDAO {
 	}
 
 	@Override
-	public List<ImageVO> selectMainImage() {
-		List<ImageVO> imageList = sqlSession.selectList(NAMESPACE + ".selectMainImage");
+	public List<ImageVO> selectAllImage() {
+		List<ImageVO> imageList = sqlSession.selectList(NAMESPACE + ".selectAllImage");
 		
 		logger.info("select() 호출: size = " + imageList.size());
 		

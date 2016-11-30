@@ -11,6 +11,6 @@ public interface SellerService {
 	// 전체 상품 정보 검색
 	public abstract List<ProductVO> readAllProduct();
 	// 전체 상품 이미지 검색
-	public abstract List<ImageVO> readMainImage();
+	public abstract List<ImageVO> readAllImage();
 	
 } // end interface SellerService

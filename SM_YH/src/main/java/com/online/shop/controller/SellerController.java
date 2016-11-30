@@ -32,7 +32,7 @@ public class SellerController {
 	public void sellerHome(Model model) {
 		// 전체 상품 리스트
 		List<ProductVO> productList = sellerService.readAllProduct();
-		List<ImageVO> imageList = sellerService.readMainImage();
+		List<ImageVO> imageList = sellerService.readAllImage();
 		// 전체 상품 리스트를 Model 객체에 넣어서 View(jsp)에 전달
 		model.addAttribute("productList", productList);
 		model.addAttribute("imageList", imageList);
