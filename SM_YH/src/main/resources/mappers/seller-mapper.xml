@@ -17,7 +17,7 @@
   
   <!-- 상품별 이미지 대표 이미지  하나 검색 -->
   <select id="selectMainImage" resultType="ImageVO">
-  select i_img from s_tbl_image where i_no = (select min(i_no) from s_tbl_image where p_name = '네번째' and s_id = 'seller1')
+  select * from s_tbl_image where i_no = (select min(i_no) from s_tbl_image where p_name = '네번째' and s_id = 'seller1')
   </select>
   
   </mapper>

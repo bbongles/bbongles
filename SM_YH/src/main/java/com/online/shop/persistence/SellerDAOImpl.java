@@ -28,7 +28,7 @@ public class SellerDAOImpl implements SellerDAO {
 	public List<ProductVO> selectAllProduct() {
 		List<ProductVO> productList = sqlSession.selectList(NAMESPACE + ".selectAllProduct");
 		
-		logger.info("select() 호출: size = " + productList.size());
+		logger.info("select() 호출: product size = " + productList.size());
 		
 		return productList;
 	}
@@ -37,7 +37,7 @@ public class SellerDAOImpl implements SellerDAO {
 	public List<ImageVO> selectAllImage() {
 		List<ImageVO> imageList = sqlSession.selectList(NAMESPACE + ".selectAllImage");
 		
-		logger.info("select() 호출: size = " + imageList.size());
+		logger.info("select() 호출: image size = " + imageList.size());
 		
 		return imageList;
 	}
