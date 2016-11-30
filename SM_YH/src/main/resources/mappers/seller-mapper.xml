@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.online.shop.SellerMapper">
+  
+  <!-- Read(select): 상품 목록  전체 검색 -->
+  <!-- 상품 정보 검색 -->
+  <select id="selectAllProduct" resultType="ProductVO">
+  select * from s_tbl_product where s_id = 'seller1' order by p_no desc
+  </select>
+  
+  <select id="selectAllImage" resultType="ImageVO">
+  select * from s_tbl_image where s_id = 'seller1' order by i_no desc
+  </select>
+  
+  <!-- 상품별 이미지 대표 이미지  하나 검색 -->
+  <select id="selectMainImage" resultType="ImageVO">
+  select i_img from s_tbl_image where i_no = (select min(i_no) from s_tbl_image where p_name = '네번째' and s_id = 'seller1')
+  </select>
+  
+  </mapper>
