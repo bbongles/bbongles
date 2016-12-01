@@ -28,6 +28,10 @@ h1, h3, table {
 .i_set {
 	margin-bottom: 5px;
 }
+#p_img {
+	width:478px;
+	margin-left: 10px;
+}
 #i_img {
 	width:478px;
 }
@@ -113,20 +117,19 @@ textarea {
 		
 		<br/>
 		
+		<label>대표 이미지</label><br/>
+		<input type="text" class="i_set" id="p_img" name="p_img" placeholder="상품의 대표 이미지 URL을 넣어주세요..."/><br/>
+		
+		<label>상세 이미지</label><br/>
 		<table id="imageTable">
 			<tr>
 				<td>
 					<input type="text" class="i_set" id="i_img" name="i_img" placeholder="각 이미지의 URL을 넣어주세요..."/><br/>
-					<textarea rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."></textarea>
+					<textarea rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea>
 				</td>
 			</tr>
 			<tbody></tbody>
 		</table>
-		<!-- <div class="col-md">
-			<div class="dropzone"></div>
-		</div>
-		<input type="text" class="i_set" name="i_img" placeholder="URL"/><br/>
-		<textarea rows="5" cols="65" class="i_set" name="i_cont"></textarea> -->
 
 		<hr/>
 
@@ -188,7 +191,7 @@ textarea {
 		$(function() {
 			$('#addImage').click(function() {
 				$('#imageTable > tbody:last').append('<tr><td><input type="text" class="i_set" id="i_img" name="i_img" placeholder="각 이미지의 URL을 넣어주세요..."/><br/>' 
-									+ '<textarea rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."></textarea></td></tr>');
+									+ '<textarea rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>');
 			});
 			
 			$('#delImage').click(function() {

@@ -22,9 +22,9 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	@Override
-	public List<ImageVO> readAllImage() {
+	public ProductVO readItemByPno(int p_no) {
 		
-		return sellerDao.selectAllImage();
+		return sellerDao.selectItemByPno(p_no);
 	}
 
 } // end class SellerServiceImpl

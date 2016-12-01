@@ -10,7 +10,7 @@ public interface SellerService {
 
 	// 전체 상품 정보 검색
 	public abstract List<ProductVO> readAllProduct();
-	// 전체 상품 이미지 검색
-	public abstract List<ImageVO> readAllImage();
+	// 해당 상품 번호로 상세 페이지 리턴
+	public abstract ProductVO readItemByPno(int p_no);
 	
 } // end interface SellerService

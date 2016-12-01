@@ -16,6 +16,7 @@ public class ProductVO {
 	private Date p_reg;
 	private int p_favo;
 	private int p_sale_cnt;
+	private String p_img;
 	
 	// 생성자
 	public ProductVO() {}
@@ -107,6 +108,14 @@ public class ProductVO {
 
 	public void setP_sale_cnt(int p_sale_cnt) {
 		this.p_sale_cnt = p_sale_cnt;
+	}
+
+	public String getP_img() {
+		return p_img;
+	}
+
+	public void setP_img(String p_img) {
+		this.p_img = p_img;
 	}
 	
 } // end class ProductVO

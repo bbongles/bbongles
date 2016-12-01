@@ -11,13 +11,10 @@
   select * from s_tbl_product where s_id = 'seller1' order by p_no desc
   </select>
   
-  <select id="selectAllImage" resultType="ImageVO">
-  select * from s_tbl_image where s_id = 'seller1' order by i_no desc
+  <!-- 해당 상품번호(p_no)의 상세페이지 검색 -->
+  <select id="selectItemByPno" resultType="ProductVO">
+  select * from s_tbl_product where p_no = #{p_no}
   </select>
-  
-  <!-- 상품별 이미지 대표 이미지  하나 검색 -->
-  <select id="selectMainImage" resultType="ImageVO">
-  select * from s_tbl_image where i_no = (select min(i_no) from s_tbl_image where p_name = '네번째' and s_id = 'seller1')
-  </select>
-  
+   
+   
   </mapper>
