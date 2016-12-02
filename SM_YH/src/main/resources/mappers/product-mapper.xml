@@ -23,4 +23,5 @@
 	values(#{i_img}, #{i_cont}, #{p_name}, #{s_id}, #{p_no})
 	</insert>
 	
+	
 </mapper>
