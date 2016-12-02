@@ -136,12 +136,12 @@
 				
 	
 	<%-- <c:forEach begin="0" end="${numOfPage-1 }" var="page" > --%><!-- 4개씩 출력 -->
-	<c:forEach begin="0" end="${numOfPage-1 }" varStatus="page" var="plist" items="${productList }">
+	<c:forEach begin="0" end="${numOfPage-1 }" varStatus="page">
 		<div class="item">		<!-- TODO : 1  -->
 			<ul class="thumbnails">	
 				<%-- <c:forEach begin="0" end="4" var="i"> --%>
 					<%-- ${productList.list[4 * page + i] } --%>
-				<c:forEach begin="0" end="3" var="i"  varStatus="status"><!-- 4 개씩 출력 -->
+				<c:forEach begin="0" end="3" var="i"  varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
 					<li class="span3">
 					<div class="product-box">
 						<span class="sale_tag"> #index : ${4 * page.index + status.index} </span>
@@ -150,7 +150,8 @@
 							<a href="pDetail?p_no=${pVo.p_no }" class="title">${pVo.p_name }</a><br>
 							<a href="" class="category"></a><!-- 카테고리 -->
 							<p class="price">${pVo.p_price }</p>	 --%>	
-							<a class="title">${plist.p_name }</a><br>
+							<a class="title">${i.p_name }</a><br>
+							<a class="title">${i.list[4 * page + status.index].p_name}</a>
 							<%-- #{i.list[1].p_name} --%>
 						</div>
 					</li>
