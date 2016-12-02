@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 
 <html>
@@ -93,15 +94,26 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<img src=<c:url value='/resources/themes/images/carousel/banner-1.jpg'/> alt="" />
+							<!-- <img src=<c:url value='/resources/themes/images/carousel/banner-1.jpg'/> alt="" /> -->
+							<img src="http://image.thefingers.co.kr/main/201612/999/999_18853.jpg" alt="" /><!-- 메인 광고 -->
 						</li>
 						<li>
-							<img src=<c:url value='/resources/themes/images/carousel/banner-2.jpg'/> alt="" />
-							<div class="intro">
+							<!-- <img src=<c:url value='/resources/themes/images/carousel/banner-2.jpg'/> alt="" /> -->
+							<img src="http://image.thefingers.co.kr/main/201612/999/999_18856.jpg" alt="" />
+							<!-- <div class="intro">
 								<h1>Mid season sale</h1>
 								<p><span>Up to 50% Off</span></p>
 								<p><span>On selected items online and in stores</span></p>
-							</div>
+							</div> -->
+						</li>
+						<li>
+							<!-- <img src=<c:url value='/resources/themes/images/carousel/banner-2.jpg'/> alt="" /> -->
+							<img src="http://image.thefingers.co.kr/main/201612/999/999_18852.jpg" alt="" />
+							<!-- <div class="intro">
+								<h1>Mid season sale</h1>
+								<p><span>Up to 50% Off</span></p>
+								<p><span>On selected items online and in stores</span></p>
+							</div> -->
 						</li>
 					</ul>
 				</div>			
@@ -131,184 +143,61 @@
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->	
 		
 								
-								
-				<!-- 첫번째 페이지 --> <!-- 다음페이지와 번갈아 가면서 작동 -->
-				
-	
-	<%-- <c:forEach begin="0" end="${numOfPage-1 }" var="page" > --%><!-- 4개씩 출력 -->
-	<c:forEach begin="0" end="${numOfPage-1 }" varStatus="page">
-		<div class="item">		<!-- TODO : 1  -->
-			<ul class="thumbnails">	
-				<%-- <c:forEach begin="0" end="4" var="i"> --%>
-					<%-- ${productList.list[4 * page + i] } --%>
-				<c:forEach begin="0" end="3" var="i"  varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
-					<li class="span3">
-					<div class="product-box">
-						<span class="sale_tag"> #index : ${4 * page.index + status.index} </span>
-						<%-- <span class="sale_tag"> index : ${status.index} </span> 
-							<p><a href="pDetail?p_no=${pVo.p_no }"><img src="${pVo.p_img }" /></a></p>
-							<a href="pDetail?p_no=${pVo.p_no }" class="title">${pVo.p_name }</a><br>
-							<a href="" class="category"></a><!-- 카테고리 -->
-							<p class="price">${pVo.p_price }</p>	 --%>	
-							<a class="title">${i.p_name }</a><br>
-							<a class="title">${i.list[4 * page + status.index].p_name}</a>
-							<%-- #{i.list[1].p_name} --%>
-						</div>
-					</li>
-				</c:forEach>
-				
-			</ul>
-		</div>
-		
-	</c:forEach> 
-				<%-- 
-				<div class="active item">		<!-- TODO : 1  -->
-					<ul class="thumbnails">		
-					
-					
-					<!-- ======================================================================== -->	
-						<c:forEach var="pVo" items="${productList }">
-					
-							<li class="span3">
+				 <!-- ** 마지막 페이지 다음에 오는 페이지는 다시 첫번째 페이지 ** -->			
+					 
+				<!-- 첫번째 페이지 -->
+				<div class="active item">		
+					<ul class="thumbnails">	
+						<c:forEach begin="0" end="0" var="page">
+						<c:forEach begin="0" end="3" varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
+								<li class="span3">
 								<div class="product-box">
-									<span class="sale_tag"></span> <!-- Sale tag 이미지 넣을 공간 -->
-										<p><a href="pDetail?p_no=${pVo.p_no }"><img src="${pVo.p_img }" /></a></p>
-										<a href="pDetail?p_no=${pVo.p_no }" class="title">${pVo.p_name }</a><br>
-										<a href="" class="category"></a><!-- 카테고리 -->
-										<p class="price">${pVo.p_price }</p>
-										
-								</div>
-							</li>
-							
+									<span class="sale_tag"><%--  #index : ${4 * page + status.index} --%> </span>
+										<p><a href="pDetail?p_no=${productList[4 * page + status.index].p_no }"><img src="${productList[4 * page + status.index].p_img }" /></a></p>
+										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
+										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+										<%-- <p class="price">₩ ${productList[4 * page + status.index].p_price }</p>	  --%>
+										<p class="price">₩ <fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/></p>	
+									</div>
+								</li>
 						</c:forEach>
-					<!-- ======================================================================== -->
-						
+						</c:forEach> 
 					</ul>
 				</div>
-				
-				<!-- 4개가 넘어가면 이 프레임으로 가둔다. -->
-				<div class="item">		<!-- TODO : 2  -->
-					<ul class="thumbnails">
-					
-					</ul>
-				</div>
-							
-				 --%>						
+	
+	
+				<!-- 두번째 페이지 이상 ~ -->
+				<c:forEach begin="1" end="${numOfPage-1 }" var="page">
+					<div class="item">		
+						<ul class="thumbnails">	
+							<%-- <c:forEach begin="0" end="4" var="i"> --%>
+								<%-- ${productList.list[4 * page + i] } --%>
+							<c:forEach begin="0" end="3" varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
+								<li class="span3">
+								<div class="product-box">
+									<span class="sale_tag"><%--  #index : ${4 * page + status.index} --%> </span>
+										<p><a href="pDetail?p_no=${productList[4 * page + status.index].p_no }"><img src="${productList[4 * page + status.index].p_img }" /></a></p>
+										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
+										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+										<p class="price">₩ <fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/>	 
 										
+									</div>
+								</li>
+							</c:forEach>
+							
+						</ul>
+					</div>
+				</c:forEach> 
+				
+				
+				
+		
 										
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->		
-											<%-- 	
-											<c:set var="pList" items="${productList }" />
-											<c:choose>
-											
-											    <c:when test="${pList.length < 5}">
-											        홍길동이 맞습니다.
-											    </c:when>
-											
-											
-											    <c:otherwise>
-											        사람이 없습니다 ㅜㅜ
-											    </c:otherwise>
 
-											</c:choose> --%>
 
-											<!-- ======================================================================== -->	
-												<!-- 								
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span> Sale tag 이미지 넣을 공간
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/1.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a>
-														<p class="price">$17.25</p>
-													</div>
-												</li>
-
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span>
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/2.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$32.50</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/3.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly turned</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$14.20</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/4.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think fast</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$31.45</p>
-													</div>
-												</li> 
-												 
-											</ul>
-										</div>--><!-- end 1페이지 -->
 										
-										<!-- 2페이지 -->
-										<div class="item">
-											<ul class="thumbnails">
-											
-												<!-- <li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/5.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$22.30</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/6.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a>
-														<p class="price">$40.25</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/7.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think water</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$10.45</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/8.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$35.50</p>
-													</div>
-												</li> -->
-																																													
-											</ul>
-										</div><!-- 2페이지 -->
-										
-										<!-- 3 -->
-										<div class="item">
-											<ul class="thumbnails">
-											
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/ladies/7.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think water</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$10.45</p>
-													</div>
-												</li>
-												
-											</ul>
-										</div>
-										<!-- 3페이지 -->
+
 										
 									</div>							
 								</div>
@@ -331,41 +220,41 @@
 								<div id="myCarousel-2" class="myCarousel carousel slide">
 									<div class="carousel-inner">
 									
-										<!-- 1페이지 -->
+										<!-- 1페이지 --><!--  TODO : 나중에 할인률 적용되는 상품들을 로직으로 불러오는 것으로 대체 -->
 										<div class="active item">
 											<ul class="thumbnails">		
 																					
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware2.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a>
-														<p class="price">$25.50</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008255.jpg"/></a></p>
+														<a href="product_detail.html" class="title">크리스마스 드라이플라워박스</a><br/>
+														<a href="products.html" class="category">SANSANGGOT</a>
+														<p class="price">₩ 34900</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware1.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$17.55</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008243.jpg"/></a></p>
+														<a href="product_detail.html" class="title">크리스마스 양말</a><br/>
+														<a href="products.html" class="category">Mellow</a>
+														<p class="price">₩ 18,000</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware6.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly turned</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$25.30</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008063.jpg"/></a></p>
+														<a href="product_detail.html" class="title">해피홀리데이카드</a><br/>
+														<a href="products.html" class="category">BASRAK</a>
+														<p class="price">₩ 9,000</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware5.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think fast</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$25.60</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008040.jpg"/></a></p>
+														<a href="product_detail.html" class="title">홀리데이 밍크 드롭 귀걸이 (2colors)</a><br/>
+														<a href="products.html" class="category">Sara and Rosa</a>
+														<p class="price">₩ 15,900</p>
 													</div>
 												</li>
 												
@@ -377,36 +266,37 @@
 											<ul class="thumbnails">
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware4.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$45.50</p>
+														<span class="sale_tag"></span>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008255.jpg"/></a></p>
+														<a href="product_detail.html" class="title">크리스마스 드라이플라워박스</a><br/>
+														<a href="products.html" class="category">SANSANGGOT</a>
+														<p class="price">₩ 34900</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware3.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a>
-														<p class="price">$33.50</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008243.jpg"/></a></p>
+														<a href="product_detail.html" class="title">크리스마스 양말</a><br/>
+														<a href="products.html" class="category">Mellow</a>
+														<p class="price">₩ 18,000</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware2.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think water</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$45.30</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008063.jpg"/></a></p>
+														<a href="product_detail.html" class="title">해피홀리데이카드</a><br/>
+														<a href="products.html" class="category">BASRAK</a>
+														<p class="price">₩ 9,000</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src=<c:url value='/resources/themes/images/cloth/bootstrap-women-ware1.jpg'/> alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$25.20</p>
+														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008040.jpg"/></a></p>
+														<a href="product_detail.html" class="title">홀리데이 밍크 드롭 귀걸이 (2colors)</a><br/>
+														<a href="products.html" class="category">Sara and Rosa</a>
+														<p class="price">₩ 15,900</p>
 													</div>
-												</li>																																	
+												</li>																																
 											</ul>
 										</div>
 									</div>							
