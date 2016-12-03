@@ -9,6 +9,7 @@ public class OptionVO {
 	private int o_stock;
 	private String p_name;
 	private String s_id;
+	private int p_no;
 	
 	// 생성자
 	public OptionVO() {}
@@ -60,6 +61,14 @@ public class OptionVO {
 
 	public void setS_id(String s_id) {
 		this.s_id = s_id;
+	}
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
 	}
 	
 } // end class OptionVO

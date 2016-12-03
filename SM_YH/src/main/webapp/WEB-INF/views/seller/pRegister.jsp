@@ -37,6 +37,7 @@ h1, h3, table {
 }
 textarea {
 	margin-bottom: 10px;
+	width:478px;
 }
 
 .col-md {
@@ -73,7 +74,7 @@ textarea {
 			<option value="jewelry">쥬얼리</option>
 		</select> <select name="p_cate2" id="p_cate2">
 			<option value="none">--------</option>
-		</select><br />
+		</select><br/>
 
 		<!-- 상품명 -->
 		<label>상품명</label> <input type="text" name="p_name" required /><br/>
@@ -96,8 +97,7 @@ textarea {
 			<tr>
 				<td><input type="text" name="o_title" placeholder="옵션제목" /></td>
 				<td><input type="text" name="o_cont" placeholder="옵션내용" /></td>
-				<td><input type="number" name="o_stock" placeholder="옵션재고"
-					value="0" /></td>
+				<td><input type="number" name="o_stock" placeholder="옵션재고" value="0" /></td>
 			</tr>
 			<tbody></tbody>
 		</table>

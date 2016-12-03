@@ -15,6 +15,34 @@
   <select id="selectItemByPno" resultType="ProductVO">
   select * from s_tbl_product where p_no = #{p_no}
   </select>
+  
+  <!-- 상품 번호로 옵션 가져오기 -->
+  <select id="selectOpByPno" resultType="OptionVO">
+  select * from s_tbl_option where p_no = #{p_no}
+  </select>
+  
+  <!-- 상품 번호로 이미지 가져오기 -->
+  <select id="selectImgByPno" resultType="ImageVO">
+  select * from s_tbl_image where p_no = #{p_no}
+  </select>
+  
+  <!-- 판매자 로고 이미지 등록 -->
+  <update id="updateLogo">
+  update s_tbl_seller
+  set s_logo = #{s_logo}
+  where s_id = 'seller1' <!-- 로그인 합치고 s_id 받아와서 찾아야함. -->
+  </update>
    
+  <!-- 판매자 아이디로 판매자 정보 받아오기 -->
+  <select id="selectSellerInfo" resultType="SellerVO">
+  select * from s_tbl_seller where s_id = #{s_id}
+  </select>
+  
+  <!-- 판매자 추가 정보 등록 -->
+  <update id="updateInfo">
+  update s_tbl_seller
+  set s_info = #{s_info}
+  where s_id = 'seller1' <!-- 로그인 합치고 s_id 받아와서 찾아야함. -->
+  </update>
    
   </mapper>

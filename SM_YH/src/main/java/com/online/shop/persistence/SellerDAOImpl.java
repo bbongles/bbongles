@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.online.shop.domain.ImageVO;
+import com.online.shop.domain.OptionVO;
 import com.online.shop.domain.ProductVO;
+import com.online.shop.domain.SellerVO;
 
 @Repository // 스프링에서 persistence Layer(DAO) 콤포넌트 빈 객체로 관리
 public class SellerDAOImpl implements SellerDAO {
@@ -41,7 +43,46 @@ public class SellerDAOImpl implements SellerDAO {
 		
 		return pVo;
 	}
-	
-	
+
+	@Override
+	public List<OptionVO> selectOpByPno(int p_no) {
+		logger.info("selectOpByPno() 호출: p_no = " + p_no);
+		
+		List<OptionVO> optionList = sqlSession.selectList(NAMESPACE + ".selectOpByPno", p_no);
+		
+		return optionList;
+	}
+
+	@Override
+	public List<ImageVO> selectImgByPno(int p_no) {
+		logger.info("selectImgByPno() 호출: p_no = " + p_no);
+		
+		List<ImageVO> imageList = sqlSession.selectList(NAMESPACE + ".selectImgByPno", p_no);
+		
+		return imageList;
+	}
+
+	@Override
+	public int updateLogo(SellerVO sVo) {
+		logger.info("updateLogo() 호출: s_id = " + sVo.getS_id());
+		
+		return sqlSession.update(NAMESPACE + ".updateLogo", sVo);
+	}
+
+	@Override
+	public SellerVO selectSellerInfo(String s_id) {
+		logger.info("selectSellerInfo() 호출: s_id = " + s_id); 
+		
+		SellerVO sellerInfo = sqlSession.selectOne(NAMESPACE + ".selectSellerInfo", s_id);
+		
+		return sellerInfo;
+	}
+
+	@Override
+	public int updateInfo(SellerVO sVo) {
+		logger.info("updateInfo() 호출: s_id = " + sVo.getS_id());
+		
+		return sqlSession.update(NAMESPACE + ".updateInfo", sVo);
+	}
 
 } // end class SellerDAOImpl
