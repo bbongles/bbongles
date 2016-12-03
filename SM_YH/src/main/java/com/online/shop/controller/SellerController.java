@@ -47,6 +47,8 @@ public class SellerController {
 		
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
 	
+	/*----------------------------------------------------------------------------*/
+	
 	@RequestMapping(value="pDetail", method=RequestMethod.GET)
 	public void productDetail(int p_no, String s_id, String p_name, Model model) {
 		// 상품 번호에 의한 각 상품의 전체 정보 받아오기
@@ -65,7 +67,7 @@ public class SellerController {
 		model.addAttribute("imageList", imageList);
 		
 	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
-	
+
 	@RequestMapping(value="logoPop", method=RequestMethod.GET)
 	public void logoPopGet() {
 		
@@ -91,5 +93,36 @@ public class SellerController {
 		int IUpResult = sellerService.updateInfo(sVo);
 		logger.info("결과: " + IUpResult);
 	}
+	/*----------------------------------------------------------------------------*/
+	
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public String mainHome(Model model) {
+		// 전체 상품 리스트
+		List<ProductVO> productList = sellerService.readAllProduct();
+		
+		int length = productList.size();
+		int numOfPage =  length / 4;
+		if (length % 4 > 0) {
+			numOfPage++; // 나머지가 있으면 올림 	 
+			// 뷰페이저로 한 페이지에 4개씩 출력 !
+			// ex) (9/4 = 2.X )=> 3페이지 필요
+		}
+		
+		// 전체 상품 리스트를 Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("productList", productList);
+		model.addAttribute("numOfPage", numOfPage);
+		
+		logger.info("numOfPage : "+numOfPage);
+		logger.info(productList.get(0).getP_name());
+		return "UI/sudo_index";
+		
+	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
+	
+	
+	
+	/*----------------------------------------------------------------------------*/
+	
+	
+	/*----------------------------------------------------------------------------*/
 	
 } // end class SellerController

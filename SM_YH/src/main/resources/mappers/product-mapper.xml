@@ -27,7 +27,7 @@
 	insert into s_tbl_image(i_img, i_cont, p_name, s_id, p_no)
 	values(#{i_img}, #{i_cont}, #{p_name}, #{s_id}, #{p_no})
 	</insert>
-	
+
 	<!-- 업데이트를 위한 해당 상품번호로 상품 정보 받아오기 -->
 	<select id="selectUpdateByPno" resultType="ProductVO">
 	select * from s_tbl_product where p_no = #{p_no}

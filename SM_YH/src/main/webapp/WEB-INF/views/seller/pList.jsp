@@ -106,6 +106,7 @@ img {
 	
 	<div id="totalBox">
 		<ul>
+		
 			<c:forEach var="pVo" items="${productList }">
 			<li>
 				<a href="pDetail?p_no=${pVo.p_no }">
@@ -117,6 +118,7 @@ img {
 				</a>
 			</li>
 			</c:forEach>
+			
 		</ul>
 	</div>
 	
