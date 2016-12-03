@@ -23,14 +23,51 @@
 	margin-right: 3px;
 }
 .normal {
-	border:3px solid #000000;
+	border:3px solid gray;
 }
 .selected {
-	border:3px solid #ff0000;
+	border:3px solid gray;
 }
 .detailInfo {
+	width: 400px;
 	float: left;
-	margin: 20px;
+	
+}
+#coveringBox {
+	width: 1260px;
+	margin: 0 auto;
+	display: inline-block;
+}
+.locationSet {
+	display: inline-block;
+	margin-left: 400px;
+}
+#imageDetailInfo {
+	width: 1260px;
+	margin: 0 auto;
+}
+.detailImg {
+	width: 800px;
+	height: 600px
+}
+.detailCont {
+	text-align: center;
+}
+#contentList {
+	width: 1260px;
+	margin: 0 auto;
+	display: inline-block;
+}
+ul{
+	list-style-type: none;
+	text-align: right;
+}
+li {
+	display: inline-block;
+}
+#detailMenu {
+	width: 1260px;
+	margin: 0 auto;
 }
 </style>
 
@@ -39,44 +76,78 @@
 
 	<h1>상품 상세페이지</h1>
 	
-	<hr/>
+	<br/>
 	
-	<div class="detailInfo">
-		<img id="bigOne" class="preview normal" src="http://i.imgur.com/wB73OvB.jpg" alt="preview" onclick="showPopup"><br/>
-		<img id="smallOne" class="thumb normal" src="http://i.imgur.com/wB73OvB.jpg" onmouseover="preview(this)">
-		<img id="smallTwo" class="thumb normal" src="http://i.imgur.com/IxpW9YU.jpg" onmouseover="preview(this)">
-		<img id="smallThree" class="thumb normal" src="http://i.imgur.com/u1kXpzS.jpg" onmouseover="preview(this)">
-	</div>
 	<form>
+	<div id="coveringBox">
+	<div class="locationSet">
+	<div class="detailInfo">
+		<img id="big" class="preview normal" src="${productVO.p_img }" alt="preview" onclick="showPopup"><br/>
+		<c:forEach var="imageList" items="${imageList }" end="2">
+		<img id="small" class="thumb normal" src="${imageList.i_img }" onmouseover="preview(this)">
+		</c:forEach>
+	</div>
+	
 	<div class="detailInfo">
 		<input type="hidden" name="p_no" value="${productVO.p_no }" />    
     	<input type="hidden" name="s_id" value="${productVO.s_id }" />
     	<span>상품명 : </span>
     	${productVO.p_name }<br/><br/>
     	<span>상품가 : </span>
-    	${productVO.p_price }<br/><br/>
+    	${productVO.p_price } 원<br/><br/>
     	<span>구매량 : </span>
-    	<input type="number" name="buy_cnt" value="1" /><br/><br/>
+    	<input type="number" name="buy_cnt" value="1" /> 개<br/><br/>
     	<span>옵션 : </span>
-    	<option>
     	
-    	</option>
+    	<!-- 해당 상품의 옵션 정보를 뿌려줘야 함 -->
+    	<select>
+    		<option value="none">--------</option>
+    		<c:forEach var="optionList" items="${optionList}" end="0">
+    		<option>${optionList.o_title }</option>
+    		</c:forEach>
+    	</select>
+    	<select>
+    		<option value="none">--------</option>
+    		<c:forEach var="optionList" items="${optionList }">
+    		<option>${optionList.o_cont }</option>
+    		</c:forEach>
+    	</select>
     </div>
-    
-    
-    
+    </div>       
+    </div><br/>
+ 
+    <div id="imageDetailInfo">
+    	<br/><hr/>
+    	
+    	<h3>이미지 정보</h3>
+    	<c:forEach var="imageList" items="${imageList }">
+    		<div style="text-align: center;" id="contentList">
+    			<img src="${imageList.i_img }" class="detailImg" /><br/><br/>
+    			<span class="detailCont">${imageList.i_cont }</span><br/><br/><br/>
+    		</div>
+    	</c:forEach>
+    </div><br/>
+    <hr/><br/>
+    <div id="detailMenu">
+    <ul>
+    	<li><a href="pUpdate?p_no=${productVO.p_no }">상품수정</a></li>
+    	<li><a href="pList">목록으로</a></li>
+    </ul>
+    </div>
+    <br/>
+
 	</form>
 	
 	
 	<script>
-    var lastImg = 'smallOne'; //Set initial thumbnail and preview
-    document.getElementById('bigOne').src = document.getElementById(lastImg).src;
+    var lastImg = 'small'; //Set initial thumbnail and preview
+    document.getElementById('big').src = document.getElementById(lastImg).src;
     document.getElementById(lastImg).className = "thumb selected";
 
     function preview(img) {
         document.getElementById(lastImg).className = "thumb normal";
         img.className = "thumb selected";
-        document.getElementById('bigOne').src = img.src;
+        document.getElementById('big').src = img.src;
         lastImg = img.id
     }   
 	</script>

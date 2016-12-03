@@ -1,5 +1,7 @@
 package com.online.shop.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productDao.insertProduct(pVo);
 	}
+	
+	@Override
+	public int readProductNo(String s_id) {
+		
+		return productDao.selectProductNo(s_id);
+	}
 
 	@Override
 	public int createOption(OptionVO oVo) {
@@ -30,6 +38,18 @@ public class ProductServiceImpl implements ProductService {
 	public int createImage(ImageVO iVo) {
 		
 		return productDao.insertImage(iVo);
+	}
+
+	@Override
+	public ProductVO readUpdateByPno(int p_no) {
+		
+		return productDao.selectUpdateByPno(p_no);
+	}
+
+	@Override
+	public List<OptionVO> readOptionByPno(int p_no) {
+		
+		return productDao.selectOptionByPno(p_no);
 	}
 
 } // end class ProductServiceImpl

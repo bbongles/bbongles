@@ -8,6 +8,7 @@ public class ImageVO {
 	private String i_cont;
 	private String p_name;
 	private String s_id;
+	private int p_no;
 	
 	// 생성자
 	public ImageVO() {}
@@ -52,5 +53,13 @@ public class ImageVO {
 	public void setS_id(String s_id) {
 		this.s_id = s_id;
 	}
-	
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
 } // end class ImageVO

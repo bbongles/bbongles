@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.online.shop.domain.ImageVO;
+import com.online.shop.domain.OptionVO;
 import com.online.shop.domain.ProductVO;
+import com.online.shop.domain.SellerVO;
 import com.online.shop.service.ProductService;
 import com.online.shop.service.SellerService;
 
@@ -28,25 +31,68 @@ public class SellerController {
 	SellerService sellerService;
 	
 	@RequestMapping(value="/pList", method=RequestMethod.GET)
-	public void sellerHome(Model model) {
+	public void sellerHome(Model model, String s_id) {
 		// 전체 상품 리스트
 		List<ProductVO> productList = sellerService.readAllProduct();
+		logger.info("productList size: " + productList.size());
 		// 전체 상품 리스트를 Model 객체에 넣어서 View(jsp)에 전달
 		model.addAttribute("productList", productList);
+
+		// 판매자 아이디에 의해 판매자 정보 받아오기
+		s_id = "seller1";
+		SellerVO sellerInfo = sellerService.readSellerInfo(s_id);
+		// 판매자 정보를 Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("sellerInfo", sellerInfo);
+		
 		
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
 	
 	/*----------------------------------------------------------------------------*/
 	
 	@RequestMapping(value="pDetail", method=RequestMethod.GET)
-	public void productDetail(int p_no, Model model) {
+	public void productDetail(int p_no, String s_id, String p_name, Model model) {
 		// 상품 번호에 의한 각 상품의 전체 정보 받아오기
 		ProductVO pVo = sellerService.readItemByPno(p_no);
 		// 전체 정보를 Model 객체에 넣어서 View(jsp)에 전달
 		model.addAttribute("productVO", pVo);
 		
+		// 옵션 정보를 받아오기
+		List<OptionVO> optionList = sellerService.readOpByPno(p_no);
+		// 받아온 옵션 정보를 Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("optionList", optionList);
+		
+		// 이미지 정보를 받아오기
+		List<ImageVO> imageList = sellerService.readImgByPno(p_no);
+		// 받아온 이미지 정보를  Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("imageList", imageList);
+		
 	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
+
+	@RequestMapping(value="logoPop", method=RequestMethod.GET)
+	public void logoPopGet() {
+		
+	}
 	
+	@RequestMapping(value="logoPop", method=RequestMethod.POST)
+	public void logoPopPost(SellerVO sVo) {
+		
+		// 서비스 객체를 사용하여 로고 이미지 update
+		int LUpResult = sellerService.updateLogo(sVo);
+		logger.info("결과: " + LUpResult);
+	}
+	
+	@RequestMapping(value="infoPop", method=RequestMethod.GET)
+	public void infoPopGet() {
+		
+	}
+	
+	@RequestMapping(value="infoPop", method=RequestMethod.POST)
+	public void infoPopPost(SellerVO sVo) {
+		
+		// 서비스 객체를 사용하여 판매자 정보 update
+		int IUpResult = sellerService.updateInfo(sVo);
+		logger.info("결과: " + IUpResult);
+	}
 	/*----------------------------------------------------------------------------*/
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
