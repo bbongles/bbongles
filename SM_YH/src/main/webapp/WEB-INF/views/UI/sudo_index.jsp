@@ -157,7 +157,7 @@
 										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
 										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
 										<%-- <p class="price">₩ ${productList[4 * page + status.index].p_price }</p>	  --%>
-										<p class="price">₩ <fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/></p>	
+										<p class="price"><fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p>	
 									</div>
 								</li>
 						</c:forEach>
@@ -228,9 +228,9 @@
 													<div class="product-box">
 														<span class="sale_tag"></span>
 														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008255.jpg"/></a></p>
-														<a href="product_detail.html" class="title">크리스마스 드라이플라워박스</a><br/>
+														<a href="product_detail.html" class="title">드라이플라워박스</a><br/>
 														<a href="products.html" class="category">SANSANGGOT</a>
-														<p class="price">₩ 34900</p>
+														<p class="price">34,900 원</p>
 													</div>
 												</li>
 												<li class="span3">
@@ -238,7 +238,7 @@
 														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008243.jpg"/></a></p>
 														<a href="product_detail.html" class="title">크리스마스 양말</a><br/>
 														<a href="products.html" class="category">Mellow</a>
-														<p class="price">₩ 18,000</p>
+														<p class="price">18,000 원</p>
 													</div>
 												</li>
 												<li class="span3">
@@ -246,15 +246,15 @@
 														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008063.jpg"/></a></p>
 														<a href="product_detail.html" class="title">해피홀리데이카드</a><br/>
 														<a href="products.html" class="category">BASRAK</a>
-														<p class="price">₩ 9,000</p>
+														<p class="price">9,000 원</p>
 													</div>
 												</li>
 												<li class="span3">
 													<div class="product-box">
 														<p><a href="product_detail.html"><img src="http://image.thefingers.co.kr/diyitem/webimage/list120/00/C000008040.jpg"/></a></p>
-														<a href="product_detail.html" class="title">홀리데이 밍크 드롭 귀걸이 (2colors)</a><br/>
+														<a href="product_detail.html" class="title">홀리데이 밍크 드롭 귀걸이</a><br/>
 														<a href="products.html" class="category">Sara and Rosa</a>
-														<p class="price">₩ 15,900</p>
+														<p class="price">15,900 원</p>
 													</div>
 												</li>
 												
