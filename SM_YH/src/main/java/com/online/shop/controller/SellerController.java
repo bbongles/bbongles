@@ -61,13 +61,18 @@ public class SellerController {
 			// 뷰페이저로 한 페이지에 4개씩 출력 !
 			// ex) (9/4 = 2.X )=> 3페이지 필요
 		}
+		int remainder = length % 4;
 		
 		// 전체 상품 리스트를 Model 객체에 넣어서 View(jsp)에 전달
 		model.addAttribute("productList", productList);
 		model.addAttribute("numOfPage", numOfPage);
+		model.addAttribute("remainder", remainder);
 		
 		logger.info("numOfPage : "+numOfPage);
-		logger.info(productList.get(0).getP_name());
+		logger.info("remainder : "+remainder);
+		/*logger.info(productList.get(0).getP_name());*/
+		
+		
 		return "UI/sudo_index";
 		
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
