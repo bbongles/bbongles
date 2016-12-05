@@ -61,23 +61,24 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductVO selectUpdateByPno(int p_no) {
-		logger.info("selectUpdateByPno() 호출: p_no = " + p_no);
+	public int deleteOptionByPno(int p_no) {
+		logger.info("deleteOptionByPno(): p_no = " + p_no);
 		
-		ProductVO pVo = sqlSession.selectOne(NAMESPACE + ".selectUpdateByPno", p_no);
-		
-		return pVo;
+		return sqlSession.delete(NAMESPACE + ".deleteOptionByPno", p_no);
 	}
 
 	@Override
-	public List<OptionVO> selectOptionByPno(int p_no) {
-		logger.info("selectOptionByPno() 호출: p_no = " + p_no);
+	public int deleteImageByPno(int p_no) {
+		logger.info("deleteImageByPno(): p_no = " + p_no);
 		
-		List<OptionVO> optionList = sqlSession.selectList(NAMESPACE + ".selectOptionByPno", p_no);
+		return sqlSession.delete(NAMESPACE + ".deleteImageByPno", p_no);
+	}
+	
+	@Override
+	public int deleteProductByPno(int p_no) {
+		logger.info("deleteProductByPno(): p_no = " + p_no);
 		
-		logger.info("selectOptionByPno() 호출: size = " + optionList.size());
-		
-		return optionList;
+		return sqlSession.delete(NAMESPACE + ".deleteProductByPno", p_no);
 	}
 	
 } // end class ProductDAOImpl

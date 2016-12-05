@@ -58,17 +58,11 @@
 	margin: 0 auto;
 	display: inline-block;
 }
-ul{
-	list-style-type: none;
-	text-align: right;
-}
-li {
-	display: inline-block;
-}
 #detailMenu {
 	width: 1260px;
 	margin: 0 auto;
 }
+
 </style>
 
 </head>
@@ -78,7 +72,7 @@ li {
 	
 	<br/>
 	
-	<form>
+	<form id="frm">
 	<div id="coveringBox">
 	<div class="locationSet">
 	<div class="detailInfo">
@@ -129,10 +123,8 @@ li {
     </div><br/>
     <hr/><br/>
     <div id="detailMenu">
-    <ul>
-    	<li><a href="pUpdate?p_no=${productVO.p_no }">상품수정</a></li>
-    	<li><a href="pList">목록으로</a></li>
-    </ul>
+    	<input type="button" id="delProduct" value="상품삭제" />
+    	<input type="button" id="gotoList" value="목록으로" />
     </div>
     <br/>
 
@@ -149,7 +141,20 @@ li {
         img.className = "thumb selected";
         document.getElementById('big').src = img.src;
         lastImg = img.id
-    }   
+    }
+    
+    $('#delProduct').click(function() {
+    	var result = confirm('정말 삭제하시겠습니까?');
+    	if (result == true) {
+    		$('#frm').attr('action', 'pDelete');
+    		$('#frm').attr('method', 'post');
+    		$('#frm').submit();
+    	}
+    });
+    
+    $('#gotoList').click(function() {
+    	location = 'pList';
+    });
 	</script>
 	
 </body>
