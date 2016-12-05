@@ -74,6 +74,7 @@ public class SellerController {
 		
 	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
 
+	
 	@RequestMapping(value="logoPop", method=RequestMethod.GET)
 	public void logoPopGet() {
 		
@@ -99,7 +100,7 @@ public class SellerController {
 		int IUpResult = sellerService.updateInfo(sVo);
 		logger.info("결과: " + IUpResult);
 	}
-	
+
 	/*----------------------------------------------------------------------------*/
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
@@ -132,9 +133,30 @@ public class SellerController {
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
 	
 	
-	
 	/*----------------------------------------------------------------------------*/
 	
+	// TODO : ProductController로 이동
+	
+	@RequestMapping(value="pDetail2", method=RequestMethod.GET)
+	public String product_Detail(int p_no, String s_id, String p_name, Model model) {
+		// 상품 번호에 의한 각 상품의 전체 정보 받아오기
+		ProductVO pVo = sellerService.readItemByPno(p_no);
+		// 전체 정보를 Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("productVO", pVo);
+		
+		// 옵션 정보를 받아오기
+		List<OptionVO> optionList = sellerService.readOpByPno(p_no);
+		// 받아온 옵션 정보를 Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("optionList", optionList);
+		
+		// 이미지 정보를 받아오기
+		List<ImageVO> imageList = sellerService.readImgByPno(p_no);
+		// 받아온 이미지 정보를  Model 객체에 넣어서 View(jsp)에 전달
+		model.addAttribute("imageList", imageList);
+		
+		return "UI/sudo_product_detail";
+		
+	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
 	
 	/*----------------------------------------------------------------------------*/
 	
