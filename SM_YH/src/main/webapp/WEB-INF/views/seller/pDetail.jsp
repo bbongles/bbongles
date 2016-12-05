@@ -12,58 +12,58 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-<style>
-.preview {
-	width: 300px;
-	height: 230px;
-}
-.thumb {
-	width: 90.7px;
-	height: 81px;
-	margin-right: 3px;
-}
-.normal {
-	border:3px solid gray;
-}
-.selected {
-	border:3px solid gray;
-}
-.detailInfo {
-	width: 400px;
-	float: left;
+	<style>
+	.preview {
+		width: 300px;
+		height: 230px;
+	}
+	.thumb {
+		width: 90.7px;
+		height: 81px;
+		margin-right: 3px;
+	}
+	.normal {
+		border:3px solid gray;
+	}
+	.selected {
+		border:3px solid gray;
+	}
+	.detailInfo {
+		width: 400px;
+		float: left;
+		
+	}
+	#coveringBox {
+		width: 1260px;
+		margin: 0 auto;
+		display: inline-block;
+	}
+	.locationSet {
+		display: inline-block;
+		margin-left: 400px;
+	}
+	#imageDetailInfo {
+		width: 1260px;
+		margin: 0 auto;
+	}
+	.detailImg {
+		width: 800px;
+		height: 600px
+	}
+	.detailCont {
+		text-align: center;
+	}
+	#contentList {
+		width: 1260px;
+		margin: 0 auto;
+		display: inline-block;
+	}
+	#detailMenu {
+		width: 1260px;
+		margin: 0 auto;
+	}
 	
-}
-#coveringBox {
-	width: 1260px;
-	margin: 0 auto;
-	display: inline-block;
-}
-.locationSet {
-	display: inline-block;
-	margin-left: 400px;
-}
-#imageDetailInfo {
-	width: 1260px;
-	margin: 0 auto;
-}
-.detailImg {
-	width: 800px;
-	height: 600px
-}
-.detailCont {
-	text-align: center;
-}
-#contentList {
-	width: 1260px;
-	margin: 0 auto;
-	display: inline-block;
-}
-#detailMenu {
-	width: 1260px;
-	margin: 0 auto;
-}
-
-</style>
+	</style>
 
 </head>
 <body>
