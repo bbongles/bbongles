@@ -192,8 +192,8 @@
 					</div>
 				</c:forEach>
 
+				<!-- 마지막 페이지 -->
 				<c:forEach begin="${numOfPage-1}" end="${numOfPage-1}" var="page">
-				
 					<div class="item">		
 						<ul class="thumbnails">	
 							<%-- <c:forEach begin="0" end="4" var="i"> --%>
