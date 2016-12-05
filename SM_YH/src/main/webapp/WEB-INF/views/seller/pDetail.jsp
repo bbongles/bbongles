@@ -75,9 +75,12 @@
 	<form id="frm">
 	<div id="coveringBox">
 		<div class="locationSet">
-			<div class="detailInfo">
+		
+			<div class="detailInfo">		<!-- 이미지 -->
 				<img id="big" class="preview normal" src="${productVO.p_img }" alt="preview" onclick="showPopup"><br/>
+				
 				<c:forEach var="imageList" items="${imageList }" end="2">
+				
 				<img id="small" class="thumb normal" src="${imageList.i_img }" onmouseover="preview(this)">
 				</c:forEach>
 			</div>
