@@ -167,7 +167,7 @@
 					</ul>
 				</div>
 	
-	
+				<c:if test="${numOfPage >= 2}">
 				<!-- 두번째 페이지 이상 ~ -->
 				<%-- <c:forEach begin="1" end="${numOfPage-1 }" var="page"> --%>
 					<c:forEach begin="1" end="${numOfPage-2 }" var="page">
@@ -191,6 +191,7 @@
 						</ul>
 					</div>
 				</c:forEach>
+				
 
 				<!-- 마지막 페이지 -->
 				<c:forEach begin="${numOfPage-1}" end="${numOfPage-1}" var="page">
@@ -215,7 +216,7 @@
 					</div>
 				</c:forEach> 
 				
-				
+				</c:if>
 				
 		
 										

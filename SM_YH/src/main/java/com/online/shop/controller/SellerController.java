@@ -97,6 +97,7 @@ public class SellerController {
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public String mainHome(Model model) {
+		logger.info("main 컨트롤러 실행");
 		// 전체 상품 리스트
 		List<ProductVO> productList = sellerService.readAllProduct();
 		
@@ -113,7 +114,7 @@ public class SellerController {
 		model.addAttribute("productList", productList);
 		model.addAttribute("numOfPage", numOfPage);
 		model.addAttribute("remainder", remainder);
-		
+		logger.info("length : " + length);
 		logger.info("numOfPage : "+numOfPage);
 		logger.info("remainder : "+remainder);
 		/*logger.info(productList.get(0).getP_name());*/
