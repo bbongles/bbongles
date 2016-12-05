@@ -1,14 +1,12 @@
 package com.online.shop.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.online.shop.domain.ImageVO;
 import com.online.shop.domain.OptionVO;
@@ -80,24 +78,23 @@ public class ProductController {
 		
 	} // end registerPOST()
 	
-	@RequestMapping(value="pUpdate", method=RequestMethod.GET)
-	public void updateGET(int p_no, Model model) {
-		logger.info("updateGET(): p_no = " + p_no);
-		// 해당 상품 번호의 상세 내용 검색
-		ProductVO pVo = productService.readUpdateByPno(p_no);
-		// DB에서 검색한 내용을 Model 객체에 attribute로 추가
-		model.addAttribute("productVO", pVo);
-		// 해당 상품 번호로 옵션 리스트 뽑아오기
-		List<OptionVO> optionList = productService.readOptionByPno(p_no);
-		// DB에서 검색한 내용을 Model 객체에 attribute로 추가
-		model.addAttribute("optionList", optionList);
+	@RequestMapping(value="pDelete", method=RequestMethod.POST)
+	public String pDelete(int p_no, RedirectAttributes attr) {
+		logger.info("pDelete() 호출 : p_no = " + p_no);
 		
-	}
-	
-	@RequestMapping(value="pUpdate", method=RequestMethod.POST)
-	public String updatePOST() {
-	
+		int oResult = productService.deleteOptionByPno(p_no);
+		int iResult = productService.deleteImageByPno(p_no);
+		int pResult = productService.deleteProductByPno(p_no);
+		
+		
+		if (oResult == 1 && iResult == 1 && pResult == 1) {
+			attr.addFlashAttribute("delete_result", "success");
+		} else {
+			attr.addFlashAttribute("delete_result", "fail");
+		}
+		attr.addFlashAttribute("p_no", p_no);
+		
 		return "redirect:pList";
 	}
-	
+
 } // end class ProductController 

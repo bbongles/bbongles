@@ -18,9 +18,9 @@ public interface ProductService {
 	public abstract int createOption(OptionVO oVo);
 	// 이미지 정보 등록 기능
 	public abstract int createImage(ImageVO iVo);
-	// 업데이트를 위한 해당 상품번호의 상품 불러오기
-	public abstract ProductVO readUpdateByPno(int p_no);
-	// 업데이트를 위행 해당 상품번호의 옵션 불러오기
-	public abstract List<OptionVO> readOptionByPno(int p_no);
+	// 상품 정보 삭제 기능
+	public abstract int deleteOptionByPno(int p_no);
+	public abstract int deleteImageByPno(int p_no);
+	public abstract int deleteProductByPno(int p_no);
 	
 } // end interface ProductService

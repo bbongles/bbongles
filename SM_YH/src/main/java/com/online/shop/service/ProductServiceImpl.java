@@ -41,15 +41,23 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductVO readUpdateByPno(int p_no) {
+	public int deleteOptionByPno(int p_no) {
 		
-		return productDao.selectUpdateByPno(p_no);
+		return productDao.deleteOptionByPno(p_no);
 	}
 
 	@Override
-	public List<OptionVO> readOptionByPno(int p_no) {
+	public int deleteImageByPno(int p_no) {
 		
-		return productDao.selectOptionByPno(p_no);
+		return productDao.deleteImageByPno(p_no);
 	}
+	
+	@Override
+	public int deleteProductByPno(int p_no) {
+		
+		return productDao.deleteProductByPno(p_no);
+	}
+
+
 
 } // end class ProductServiceImpl
