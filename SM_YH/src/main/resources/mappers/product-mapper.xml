@@ -27,15 +27,18 @@
 	insert into s_tbl_image(i_img, i_cont, p_name, s_id, p_no)
 	values(#{i_img}, #{i_cont}, #{p_name}, #{s_id}, #{p_no})
 	</insert>
-
-	<!-- 업데이트를 위한 해당 상품번호로 상품 정보 받아오기 -->
-	<select id="selectUpdateByPno" resultType="ProductVO">
-	select * from s_tbl_product where p_no = #{p_no}
-	</select>
 	
-	<!-- 업데이트를 위한 해당 상품번호로 옵션 정보 받아오기 -->
-	<select id="selectOptionByPno" resultType="OptionVO">
-	select * from s_tbl_option where p_no = #{p_no}
-	</select>
+	<!-- 상품 정보 삭제 -->
+	<delete id="deleteOptionByPno">
+	delete from s_tbl_option where p_no = #{p_no}
+	</delete>
+	
+	<delete id="deleteImageByPno">
+	delete from s_tbl_image where p_no = #{p_no}
+	</delete>
+
+	<delete id="deleteProductByPno">
+	delete from s_tbl_product where p_no = #{p_no}
+	</delete>
 	
 </mapper>
