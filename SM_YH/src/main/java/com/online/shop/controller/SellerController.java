@@ -93,6 +93,7 @@ public class SellerController {
 		int IUpResult = sellerService.updateInfo(sVo);
 		logger.info("결과: " + IUpResult);
 	}
+	
 	/*----------------------------------------------------------------------------*/
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
