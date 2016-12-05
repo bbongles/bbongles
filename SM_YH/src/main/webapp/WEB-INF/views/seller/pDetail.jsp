@@ -74,40 +74,41 @@
 	
 	<form id="frm">
 	<div id="coveringBox">
-	<div class="locationSet">
-	<div class="detailInfo">
-		<img id="big" class="preview normal" src="${productVO.p_img }" alt="preview" onclick="showPopup"><br/>
-		<c:forEach var="imageList" items="${imageList }" end="2">
-		<img id="small" class="thumb normal" src="${imageList.i_img }" onmouseover="preview(this)">
-		</c:forEach>
-	</div>
+		<div class="locationSet">
+			<div class="detailInfo">
+				<img id="big" class="preview normal" src="${productVO.p_img }" alt="preview" onclick="showPopup"><br/>
+				<c:forEach var="imageList" items="${imageList }" end="2">
+				<img id="small" class="thumb normal" src="${imageList.i_img }" onmouseover="preview(this)">
+				</c:forEach>
+			</div>
 	
-	<div class="detailInfo">
-		<input type="hidden" name="p_no" value="${productVO.p_no }" />    
-    	<input type="hidden" name="s_id" value="${productVO.s_id }" />
-    	<span>상품명 : </span>
-    	${productVO.p_name }<br/><br/>
-    	<span>상품가 : </span>
-    	${productVO.p_price } 원<br/><br/>
-    	<span>구매량 : </span>
-    	<input type="number" name="buy_cnt" value="1" /> 개<br/><br/>
-    	<span>옵션 : </span>
+			<div class="detailInfo">
+				<input type="hidden" name="p_no" value="${productVO.p_no }" />    
+    			<input type="hidden" name="s_id" value="${productVO.s_id }" />
+    			<span>상품명 : </span>
+    			${productVO.p_name }<br/><br/>
+    			<span>상품가 : </span>
+    			${productVO.p_price } 원<br/><br/>
+    			<span>구매량 : </span>
+    			<input type="number" name="buy_cnt" value="1" /> 개<br/><br/>
+    			<span>옵션 : </span>
     	
-    	<!-- 해당 상품의 옵션 정보를 뿌려줘야 함 -->
-    	<select>
-    		<option value="none">--------</option>
-    		<c:forEach var="optionList" items="${optionList}" end="0">
-    		<option>${optionList.o_title }</option>
-    		</c:forEach>
-    	</select>
-    	<select>
-    		<option value="none">--------</option>
-    		<c:forEach var="optionList" items="${optionList }">
-    		<option>${optionList.o_cont }</option>
-    		</c:forEach>
-    	</select>
-    </div>
-    </div>       
+    			<!-- 해당 상품의 옵션 정보를 뿌려줘야 함 -->
+    			<select>
+    				<option value="none">--------</option>
+    				<c:forEach var="optionList" items="${optionList}" end="0">
+    				<option>${optionList.o_title }</option>
+    				</c:forEach>
+    			</select>
+    			<select>
+    				<option value="none">--------</option>
+    				<c:forEach var="optionList" items="${optionList }">
+    				<option>${optionList.o_cont }</option>
+    				</c:forEach>
+    			</select>
+    		</div>
+    	
+    	</div>    
     </div><br/>
  
     <div id="imageDetailInfo">
@@ -153,7 +154,7 @@
     });
     
     $('#gotoList').click(function() {
-    	location = 'pList';
+    	location = 'main';
     });
 	</script>
 	
