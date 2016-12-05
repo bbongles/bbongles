@@ -22,7 +22,7 @@ import com.online.shop.service.SellerService;
 public class SellerController {
 
 	private static final Logger logger = 
-			LoggerFactory.getLogger(ProductController.class);
+			LoggerFactory.getLogger(SellerController.class);
 	
 	@Autowired 
 	ProductService productService;
