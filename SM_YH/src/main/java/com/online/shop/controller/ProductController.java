@@ -25,8 +25,17 @@ public class ProductController {
 	
 	@RequestMapping(value="pRegister", method=RequestMethod.GET)
 	public void registerGET() {
-		
 	} // end registerGET()
+	
+	
+	@RequestMapping(value="pRegister2", method=RequestMethod.GET)
+	public String pRegisterGET() {
+		return "UI/sudo_product_register";
+	} // end registerGET()
+
+	
+	
+	/*----------------------------------------------------------------------------*/
 	
 	@RequestMapping(value="pRegister", method=RequestMethod.POST)
 	public String registerPOST(ProductVO pVo, String[] o_title, String[] o_cont, int[] o_stock, 
@@ -78,6 +87,8 @@ public class ProductController {
 		
 	} // end registerPOST()
 	
+	/*----------------------------------------------------------------------------*/
+	
 	@RequestMapping(value="pDelete", method=RequestMethod.POST)
 	public String pDelete(int p_no, RedirectAttributes attr) {
 		logger.info("pDelete() 호출 : p_no = " + p_no);
@@ -96,5 +107,6 @@ public class ProductController {
 		
 		return "redirect:pList";
 	}
+	/*----------------------------------------------------------------------------*/
 
 } // end class ProductController 

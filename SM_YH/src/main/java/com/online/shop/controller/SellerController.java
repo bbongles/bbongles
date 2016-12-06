@@ -48,9 +48,9 @@ public class SellerController {
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
 	
 	/*----------------------------------------------------------------------------*/
-	/* 디테일 페이지
-	 * 
-	@RequestMapping(value="pDetail", method=RequestMethod.GET)
+	
+	 
+	/*@RequestMapping(value="pDetail", method=RequestMethod.GET)
 	public void productDetail(int p_no, String s_id, String p_name, Model model) {
 		// 상품 번호에 의한 각 상품의 전체 정보 받아오기
 		ProductVO pVo = sellerService.readItemByPno(p_no);
@@ -72,6 +72,10 @@ public class SellerController {
 		SellerVO sVo = sellerService.readSellerInfo(s_id);
 		// 판매자 정보를 Model 객체에 넣어서 View(jsp)에 전달
 		model.addAttribute("sVo", sVo);
+		
+		List<ProductVO> list = productService.selectCate2(pVo.getP_cate2());
+		model.addAttribute("relativeList", list);
+		
 		
 	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
 	 */
@@ -102,6 +106,9 @@ public class SellerController {
 		logger.info("결과: " + IUpResult);
 	}
 
+	/*----------------------------------------------------------------------------*/
+	/*----------------------------------------------------------------------------*/
+	/*----------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------*/
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
@@ -145,6 +152,7 @@ public class SellerController {
 		List<OptionVO> optionList = sellerService.readOpByPno(p_no);	// 옵션 정보를 받아오기
 		List<ImageVO> imageList = sellerService.readImgByPno(p_no);	// 이미지 정보를 받아오기
 		List<ProductVO> productList = sellerService.readAllProduct();	// 전체 상품 리스트
+		List<ProductVO> cateCheck = productService.selectCate2(pVo.getP_cate2());	// 카테고리가 연관된 작품 리스트
 		
 		int length = productList.size();
 		int numOfPage =  length / 4;
@@ -161,6 +169,8 @@ public class SellerController {
 		model.addAttribute("productList", productList);
 		model.addAttribute("numOfPage", numOfPage);
 		model.addAttribute("remainder", remainder);
+		model.addAttribute("relativeList", cateCheck);	// 카테고리 검색해서 연관상품 보여주기
+		
 		
 		return "UI/sudo_product_detail";
 		

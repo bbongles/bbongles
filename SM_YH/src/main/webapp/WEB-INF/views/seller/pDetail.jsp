@@ -126,6 +126,15 @@
     	</c:forEach>
     </div><br/>
     <hr/><br/>
+    
+    <div>관련 상품</div>
+    <c:forEach var="relativeList" items="${relativeList}">
+    	<div style="text-align: center">
+    	<img src="${relativeList.p_img}" class="preview">
+    	</div> 
+    </c:forEach>
+    
+    
     <div id="detailMenu">
     	<input type="button" id="delProduct" value="상품삭제" />
     	<input type="button" id="gotoList" value="목록으로" />

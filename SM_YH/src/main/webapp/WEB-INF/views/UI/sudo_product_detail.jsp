@@ -149,21 +149,22 @@
 								<h4><strong><fmt:formatNumber value="${productVO.p_price }" groupingUsed="true"/> 원</strong></h4>
 							</div>
 							
-							<div class="span5">		<!-- 주문하기 -->
+							<div class="span5" >		<!-- 주문하기 -->
 								<br>
-								<select class="select1">		<!-- 옵션 -->
-				    				<option value="none">--------</option>
-				    				<c:forEach var="optionList" items="${optionList}" end="0">
-				    					<option>${optionList.o_title }</option>
-				    				</c:forEach>
-				    			</select>
-				    			<select class="select2">
-				    				<option value="none">----------------</option>
-				    				<c:forEach var="optionList" items="${optionList }">
-				    					<option>${optionList.o_cont }</option>
-				    				</c:forEach>
-				    			</select>
-							
+								<div id="optionNullCheck" style="display:none;" >		<!-- ******** -->
+									<select class="select1">		<!-- 옵션 -->
+					    				<option value="none">--------</option>
+					    				<c:forEach var="optionList" items="${optionList}" end="0">
+					    					<option>${optionList.o_title }</option>
+					    				</c:forEach>
+					    			</select>
+					    			<select class="select2">
+					    				<option value="none">----------------</option>
+					    				<c:forEach var="optionList" items="${optionList }">
+					    					<option>${optionList.o_cont }</option>
+					    				</c:forEach>
+					    			</select>
+								</div>
 								<form class="form-inline">
 									<!-- 
 										<label class="checkbox">
@@ -193,8 +194,18 @@
 								</ul>	
 														 
 								<div class="tab-content">
+								
 									<!-- 첫번째 탭 -->
-									<div class="tab-pane active" id="tab1">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+									<div class="tab-pane active" id="tab1">
+										<!-- Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem -->
+										<c:forEach var="imageList" items="${imageList }">
+								    		<div style="text-align: center;" id="contentList">
+								    			<img src="${imageList.i_img }" class="detailImg" /><br/><br/>
+								    			<span class="detailCont">${imageList.i_cont }</span><br/><br/><br/>
+								    		</div>
+								    	</c:forEach>
+									</div>
+									
 									<!-- 두번째 탭 -->
 									<div class="tab-pane" id="tab2">
 										<table class="table table-striped shop_attributes">	
@@ -210,8 +221,12 @@
 											</tbody>
 										</table>
 									</div>
+									
 									<!-- 세번째 탭 -->
-									<div class="tab-pane active" id="tab3">Q&A</div>
+									<div class="tab-pane active" id="tab3">
+										Q&A
+									</div>
+									
 								</div>	
 							</div>		
 							
@@ -240,15 +255,15 @@
 											<div class="active item">		
 												<ul class="thumbnails">	
 													<c:forEach begin="0" end="0" var="page">
-													<c:forEach begin="0" end="3" varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
+													<c:forEach begin="0" end="3" varStatus="status" items="${relativeList }"><!-- 4 개씩 출력 -->
 															<li class="span3">
 															<div class="product-box">
 																<span class="sale_tag"><%--  #index : ${4 * page + status.index} --%> </span>
-																	<p><a href="pDetail?p_no=${productList[4 * page + status.index].p_no }"><img src="${productList[4 * page + status.index].p_img }" /></a></p>
-																	<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
-																	<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+																	<p><a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }"><img src="${relativeList[4 * page + status.index].p_img }" /></a></p>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="title">${relativeList[4 * page + status.index].p_name }</a><br>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="category">${relativeList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
 																	<%-- <p class="price">₩ ${productList[4 * page + status.index].p_price }</p>	  --%>
-																	<p class="price"><fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p>	
+																	<p class="price"><fmt:formatNumber value="${relativeList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p>	
 																</div>
 															</li>
 													</c:forEach>
@@ -264,14 +279,14 @@
 													<ul class="thumbnails">	
 														<%-- <c:forEach begin="0" end="4" var="i"> --%>
 															<%-- ${productList.list[4 * page + i] } --%>
-														<c:forEach begin="0" end="3" varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
+														<c:forEach begin="0" end="3" varStatus="status" items="${relativeList }"><!-- 4 개씩 출력 -->
 															<li class="span3">
 															<div class="product-box">
 																<span class="sale_tag"><%--  #index : ${4 * page + status.index} --%> </span>
-																	<p><a href="pDetail?p_no=${productList[4 * page + status.index].p_no }"><img src="${productList[4 * page + status.index].p_img }" /></a></p>
-																	<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
-																	<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
-																	<p class="price"><fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p> 
+																	<p><a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }"><img src="${relativeList[4 * page + status.index].p_img }" /></a></p>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="title">${relativeList[4 * page + status.index].p_name }</a><br>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="category">${relativeList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+																	<p class="price"><fmt:formatNumber value="${relativeList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p> 
 																	
 																</div>
 															</li>
@@ -288,14 +303,14 @@
 													<ul class="thumbnails">	
 														<%-- <c:forEach begin="0" end="4" var="i"> --%>
 															<%-- ${productList.list[4 * page + i] } --%>
-														<c:forEach begin="0" end="${remainder-1}" varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
+														<c:forEach begin="0" end="${remainder-1}" varStatus="status" items="${relativeList }"><!-- 4 개씩 출력 -->
 															<li class="span3">
 															<div class="product-box">
 																<span class="sale_tag"><%--  #index : ${4 * page + status.index} --%> </span>
-																	<p><a href="pDetail?p_no=${productList[4 * page + status.index].p_no }"><img src="${productList[4 * page + status.index].p_img }" /></a></p>
-																	<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
-																	<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
-																	<p class="price"><fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p> 
+																	<p><a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }"><img src="${relativeList[4 * page + status.index].p_img }" /></a></p>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="title">${relativeList[4 * page + status.index].p_name }</a><br>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="category">${relativeList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+																	<p class="price"><fmt:formatNumber value="${relativeList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p> 
 																	
 																</div>
 															</li>
@@ -491,6 +506,12 @@
 		    	location = 'main';
 		    });
 	    	
+	    	// 옵션 없을시 hidden
+	    	$(document).ready(function(){
+	    		if("${optionList}"!="[]"){
+	    			$('#optionNullCheck').show();
+	    		}
+	    	})
 		</script>
     </body>
 </html>
