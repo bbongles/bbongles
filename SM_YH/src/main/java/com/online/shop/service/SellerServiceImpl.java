@@ -9,6 +9,8 @@ import com.online.shop.domain.ImageVO;
 import com.online.shop.domain.OptionVO;
 import com.online.shop.domain.ProductVO;
 import com.online.shop.domain.SellerVO;
+import com.online.shop.pageutil.PageCriteria;
+import com.online.shop.pageutil.SearchPageCriteria;
 import com.online.shop.persistence.SellerDAO;
 
 @Service // 스프링 프레임워크에 Service 계층 콤포넌트 bean 객체로 등록
@@ -58,5 +60,42 @@ public class SellerServiceImpl implements SellerService {
 		
 		return sellerDao.updateInfo(sVo);
 	}
+	
+	// 관리자 페이지 관련
+	@Override
+	public List<SellerVO> read() {
+		return sellerDao.select();
+	}
+	
+	@Override
+	public int getNumOfRecords() {
+		return sellerDao.getNumOfRecords();
+	}
+	
+	@Override
+	public List<SellerVO> read(PageCriteria cri) {
+		return sellerDao.select(cri);
+	}
+	
+	@Override
+	public List<SellerVO> listSearchCriteria(SearchPageCriteria cri) {
+		return sellerDao.listSearch(cri);
+	}
+	
+	@Override
+	public int listSearchCount(SearchPageCriteria cri) {
+		return sellerDao.listSearchCount(cri);
+	}
+
+	@Override
+	public List<SellerVO> searchAccess() {
+		return sellerDao.selectAccess();
+	}
+	
+	@Override
+	public int updateAcc(int sno) {
+		return sellerDao.update(sno);
+	}
+	//------------------------------------------여기까지
 
 } // end class SellerServiceImpl

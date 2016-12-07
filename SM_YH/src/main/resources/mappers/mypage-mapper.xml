@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.online.shop.MypageMapper">
+
+	<!-- 구매내역 알아오는 쿼리?  -->
+	<select id = "selectBybuymain2" resultType="com.online.shop.domain.CartandBuy">
+	select count(*) as count from s_tbl_buy b1, s_tbl_cart c1 where b1.b_id = #{b_id} and b1.BUY_STATUS between 0 and 3 and b1.buy_no = c1.buy_no
+	and rownum between 1 and 5 order by buy_date desc
+	</select>
+		
+	
+	
+ </mapper>
