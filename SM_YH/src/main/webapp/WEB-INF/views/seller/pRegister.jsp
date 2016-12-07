@@ -204,6 +204,7 @@ textarea {
 			if (res.success === true) {
 				document.querySelector('.status').classList.add('bg-success');
 				document.querySelector('.status').innerHTML = res.data.link;
+				
 			}
 		};
 

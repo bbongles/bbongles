@@ -11,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="../resources/build/imgur.min.js"></script>
 
-<title>판매자 로고  등록</title>
+<title>이미지 등록</title>
 
 <style>
 .col-md {

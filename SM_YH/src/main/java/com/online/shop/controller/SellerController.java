@@ -49,8 +49,8 @@ public class SellerController {
 	
 	/*----------------------------------------------------------------------------*/
 	
-	 
-	/*@RequestMapping(value="pDetail", method=RequestMethod.GET)
+	/* 
+	@RequestMapping(value="pDetail", method=RequestMethod.GET)
 	public void productDetail(int p_no, String s_id, String p_name, Model model) {
 		// 상품 번호에 의한 각 상품의 전체 정보 받아오기
 		ProductVO pVo = sellerService.readItemByPno(p_no);
@@ -78,7 +78,7 @@ public class SellerController {
 		
 		
 	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
-	 */
+	*/ 
 	
 	@RequestMapping(value="logoPop", method=RequestMethod.GET)
 	public void logoPopGet() {
@@ -154,6 +154,10 @@ public class SellerController {
 		List<ProductVO> productList = sellerService.readAllProduct();	// 전체 상품 리스트
 		List<ProductVO> cateCheck = productService.selectCate2(pVo.getP_cate2());	// 카테고리가 연관된 작품 리스트
 		
+		// 판매자 정보 받아오기
+		s_id = "seller1";
+		SellerVO sVo = sellerService.readSellerInfo(s_id);
+		
 		int length = productList.size();
 		int numOfPage =  length / 4;
 		if (length % 4 > 0) {
@@ -170,11 +174,15 @@ public class SellerController {
 		model.addAttribute("numOfPage", numOfPage);
 		model.addAttribute("remainder", remainder);
 		model.addAttribute("relativeList", cateCheck);	// 카테고리 검색해서 연관상품 보여주기
-		
+		model.addAttribute("sVo", sVo);
+
+	
+			
 		
 		return "UI/sudo_product_detail";
 		
 	} // end productDetail() -> 판매자 홈에서 상품 번호를 참조해 상품 상세 페이지로 넘겨주는 역할 
+	
 	
 	/*----------------------------------------------------------------------------*/
 	

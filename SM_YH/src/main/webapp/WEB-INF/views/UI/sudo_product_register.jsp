@@ -9,19 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 
- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+ <!--  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">  -->
     <link href="<c:url value='/resources/build/imgur.min.css'/>" rel="stylesheet" media="screen"><!-- *** 수정 *** -->
     <style>
-        .jumbotron h1, .jumbotron p {
-            padding-left: 60px;
-            padding-right: 60px;
-        }
 
         .col-md {
             margin: 0 auto;
             max-width: 500px
         }
-    </style>
+    </style> 
 
 	<style>
 		#opTable1 {
@@ -33,7 +29,62 @@
 		#opTable3{
 	   		 width: 40px;
 		}
+
 	</style>
+
+&
+<style type="text/css">
+	.pop-layer {
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 410px;
+		height: auto;
+		background-color: #fff;
+		border: 5px solid #3571B5;
+		z-index: 10;
+	}
+	
+	
+	.pop-layer .pop-container {
+		padding: 20px 25px;
+	}
+	
+	.pop-layer p.ctxt {
+		color: #666;
+		line-height: 25px;
+	}
+	
+	.pop-layer .btn-r {
+		width: 100%;
+		margin: 10px 0 20px;
+		padding-top: 10px;
+		border-top: 1px solid #DDD;
+		text-align: right;
+	}
+	
+	a.cbtn {
+		display: inline-block;
+		height: 25px;
+		padding: 0 14px 0;
+		border: 1px solid #304a8a;
+		background-color: #3f5a9d;
+		font-size: 13px;
+		color: #fff;
+		line-height: 25px;
+	}
+	
+	a.cbtn:hover {
+		border: 1px solid #091940;
+		background-color: #1f326a;
+		color: #fff;
+	}
+</style>
+
+
+
+
 <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
 <!-- bootstrap -->
 <link
@@ -117,8 +168,8 @@ $(function() {
 // 이미지 양식 추가 및 삭제
 $(function() {
 	$('#addImage').click(function() {
-		$('#imageTable > tbody:last').append('<tr><td><input type="text" class="i_set" id="i_img" name="i_img" placeholder="각 이미지의 URL을 넣어주세요..."/><br/>' 
-							+ '<textarea rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>');
+		$('#imageTable > tbody:last').append('<tr><td><input type="text" class="i_set input-xlarge" id="i_img" name="i_img" placeholder="각 이미지의 URL을 넣어주세요..."/><br/>' 
+							+ '<textarea rows="5" cols="65" class="i_set input-xlarge" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>');
 	});
 	
 	$('#delImage').click(function() {
@@ -131,7 +182,10 @@ $(function() {
 		var feedback = function(res) {
 			if (res.success === true) {
 				document.querySelector('.status').classList.add('bg-success');
-				document.querySelector('.status').innerHTML = res.data.link;
+				/* document.querySelector('.status').innerHTML = res.data.link; */
+				 console.log(res.data.link); // F12 로그
+	                $('#p_img').val(res.data.link);
+				 $("#layer1").hide();
 			}
 		};
 		
@@ -141,6 +195,62 @@ $(function() {
 		// TODO: 사진을 업로드하면 사진은 imgur서버상에 존재... 그러나 웹 사이트 계정에선 확인 불가...
 		});
    });
+   
+   $(function() {
+	   $("#btn_insert").click(function() {
+		  if (confirm("정말 등록하시겠습니까?") == true) {
+			  $("#pRegister").submit();
+		  } 
+	   });
+	   $("#btn_reset").click(function() {
+		   $("form").each(function() {  
+	            this.reset();  
+	         });  
+	   });
+   });
+   
+   // ****** 이미지로더
+   
+   $(document).ready(function(){
+	
+		$('.image-loader').click(function() {
+			window.open("../seller/logoPop", 'window', 'width=400, height=200, resizable=no');
+		});
+	});
+</script>
+
+<script type="text/javascript">
+
+	function layer_open(el) {
+		var temp = $('#' + el); //레이어의 id를 temp변수에 저장
+		var bg = temp.prev().hasClass('bg'); //dimmed 레이어를 감지하기 위한 boolean 변수
+		if (bg) {
+			$('.layer').fadeIn();
+		} else {
+			temp.fadeIn(); //bg 클래스가 없으면 일반레이어로 실행한다.
+		}
+		// 화면의 중앙에 레이어를 띄운다.
+		if (temp.outerHeight() < $(document).height())
+			temp.css('margin-top', '-' + temp.outerHeight() / 2 + 'px');
+		else
+			temp.css('top', '0px');
+		if (temp.outerWidth() < $(document).width())
+			temp.css('margin-left', '-' + temp.outerWidth() / 2 + 'px');
+		else
+			temp.css('left', '0px');
+		temp.find('a.cbtn').click(function(e) {
+			if (bg) {
+				$('.layer').fadeOut();
+			} else {
+				temp.fadeOut(); //'닫기'버튼을 클릭하면 레이어가 사라진다.
+			}
+			e.preventDefault();
+		});
+		$('.layer .bg').click(function(e) {
+			$('.layer').fadeOut();
+			e.preventDefault();
+		});
+	}
 </script>
 
 </head><!-- -------------------------------------------------------------- -->
@@ -227,7 +337,7 @@ $(function() {
 									<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
 									
 									<!-- <form action="b_register_result" method="post" id="fileForm1" role="form">** submit -->
-									<form action="pRegister" method="post">		<!-- TODO : ****** -->
+									<form id="pRegister" action="pRegister" method="post">		<!-- TODO : ****** -->
 									
 										<!-- ######################################## -->
 										<!-- 왼쪽 -->
@@ -331,7 +441,7 @@ $(function() {
 										
 											<div class="control-group">
 												<label>옵션</label>
-												<div class="controls">
+												<div class="controls input-xlarge form-inline">	<!-- **** -->
 													
 													<table id="optionTable">
 														<tr>
@@ -347,17 +457,31 @@ $(function() {
 											</div>										 
 											
 											<!-- -------------------------------------------------------------- --> 
-											 
+											</div>
+											
+										<div class="span6">	
+											
+											
 											 <div class="control-group">
 											 	<label for="b_email">이미지</label>
 											 	
-											 	<div class="col-md">
+											 	<!-- <div class="col-md">
 													<div class="dropzone"></div>
-												</div>
+												</div> -->
 												
-												<div class="controls" id="b_email">
+												<div class="controls">
 													<!-- <label>대표 이미지</label><br/> -->
-													<input class="input-xlarge" type="text" class="i_set" id="p_img" name="p_img" placeholder="메인 이미지 "/><br/>
+													<div class="form-inline">
+														<input class="input-xlarge" type="text" class="i_set" id="p_img" name="p_img" placeholder="메인 이미지 "/>
+														<button class="image-loader" >파일첨부</button>
+													</div>
+													<!-- *** TODO Imgur *** -->
+													<!-- <div class="col-md">
+														<div class="dropzone"></div>
+													</div> -->
+													
+													<br/>
+													
 													<table id="imageTable"  >
 														<tr>
 															<td>
@@ -366,9 +490,10 @@ $(function() {
 															</td>
 														</tr>
 														<tbody></tbody>
-														
 													</table>
 													
+													<button id="addImage" type="button">추가</button>
+													<button id="delImage" type="button">삭제</button>
 												</div>
 											 </div>
 											 
@@ -382,9 +507,15 @@ $(function() {
 									</div>
 									<hr>
 											<div class="actions">
+												<!-- 
 												<input tabindex="9" class="btn btn-inverse large" type="submit" value="등록">
 												<input tabindex="9" class="btn btn-inverse large" type="reset" value="취소">
+												 -->
+												 <input tabindex="9" id="btn_insert" class="btn btn-inverse large" type="button" value="등록">
+												<input tabindex="9" id="btn_reset" class="btn btn-inverse large" type="button" value="취소">
+												
 											</div>	<br/>
+											
 								</div>
 								
 							</div>
@@ -392,6 +523,50 @@ $(function() {
 							
 						</div><!-- End  -->
 			
+						
+						
+						
+						
+						
+						
+	<!-- http://mylko72.maru.net/jquerylab/study/layer-popup.html#  -->					
+						
+						
+			&			
+						
+<a href="#" class="btn-example" onclick="layer_open('layer1');return false;">예제-1 보기</a>
+	<div id="layer1" class="pop-layer">
+		<div class="pop-container">
+			<div class="pop-conts">
+			
+			<!--content //-->
+			
+				<p class="ctxt mb20">Imgur Image Loader.<br>
+				<!-- 
+				Your registration was submitted successfully.<br>
+				
+				Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+				
+				Hope to see you soon! -->
+				
+				<div class="col-md">
+		       		<div class="dropzone"></div>
+		        </div>
+					
+				</p>
+			<div class="btn-r">
+				<a href="#" class="cbtn">Close</a>
+			</div>
+		<!--// content-->
+		</div>
+	</div>
+</div>
+						
+						
+						
+						
+					
+						
 						
 						
 						
