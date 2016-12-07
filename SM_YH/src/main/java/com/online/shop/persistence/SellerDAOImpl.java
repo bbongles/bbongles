@@ -12,12 +12,15 @@ import com.online.shop.domain.ImageVO;
 import com.online.shop.domain.OptionVO;
 import com.online.shop.domain.ProductVO;
 import com.online.shop.domain.SellerVO;
+import com.online.shop.pageutil.PageCriteria;
+import com.online.shop.pageutil.SearchPageCriteria;
 
 @Repository // 스프링에서 persistence Layer(DAO) 콤포넌트 빈 객체로 관리
 public class SellerDAOImpl implements SellerDAO {
 
 	private static final String NAMESPACE = 
 			"com.online.shop.SellerMapper";
+	private static final String NAMESPACEM = "com.online.shop.ShopMapper";
 	
 	private static final Logger logger = 
 			LoggerFactory.getLogger(SellerDAOImpl.class);
@@ -84,5 +87,47 @@ public class SellerDAOImpl implements SellerDAO {
 		
 		return sqlSession.update(NAMESPACE + ".updateInfo", sVo);
 	}
+	
+	// 관리자 페이지 관련
+	@Override
+	public List<SellerVO> select() {
+		List<SellerVO> list =  sqlSession.selectList(NAMESPACEM + ".sellerSelectAll");
+		logger.info("select() 호출: " + list.size());
+				
+		return list;
+	}
+	
+	@Override
+	public int getNumOfRecords() {
+		return sqlSession.selectOne(NAMESPACEM + ".sellerTotalCount") ;
+	}
+		
+	@Override
+	public List<SellerVO> select(PageCriteria cri) {
+		return sqlSession.selectList(NAMESPACEM + ".sellerListPage", cri);
+	}
+	
+	@Override
+	public List<SellerVO> listSearch(SearchPageCriteria cri) { 
+//		List<SellerVO> list = sqlSession.selectList(NAMESPACE + ".searchListSearch", cri);
+//		System.out.println("list: "+ list.get(0).getS_id());
+		return sqlSession.selectList(NAMESPACEM + ".searchListSearch", cri);
+	}
+	
+	@Override
+	public int listSearchCount(SearchPageCriteria cri) {
+		return sqlSession.selectOne(NAMESPACEM + ".sellerListSearchCount", cri);
+	}
+	
+	@Override
+	public List<SellerVO> selectAccess() {
+		return sqlSession.selectList(NAMESPACEM + ".selectAccess");
+	}
 
+	@Override
+	public int update(int sno) {
+		return sqlSession.update(NAMESPACEM + ".sellerAccept", sno);
+	}
+	//-------------------------------여기까지
+	
 } // end class SellerDAOImpl
