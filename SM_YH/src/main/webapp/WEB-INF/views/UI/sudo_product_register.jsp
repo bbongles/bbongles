@@ -2,12 +2,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
-<title>Bootstrap E-commerce Templates</title>
+<title>H-Shopper : 특별함을 전하는</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
+
+ <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<c:url value='/resources/build/imgur.min.css'/>" rel="stylesheet" media="screen"><!-- *** 수정 *** -->
+    <style>
+        .jumbotron h1, .jumbotron p {
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+
+        .col-md {
+            margin: 0 auto;
+            max-width: 500px
+        }
+    </style>
 
 	<style>
 		#opTable1 {
@@ -49,7 +63,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
-<script>
+<script type="text/javascript" src="<c:url value='/resources/build/imgur.min.js'/>"></script><!-- *** 수정 *** -->
+    <script type="text/javascript">
 
 $(function() {
 	$("select[name=p_cate1]").change(function() {
@@ -88,9 +103,9 @@ $(function() {
 //옵션 양식 추가 및 삭제
 $(function() {
 	$('#addOption').click(function() {
-		$('#optionTable > tbody:last').append('<tr><td><input type="text" name="o_title" placeholder="옵션제목" /></td>'
-							+ '<td><input type="text" name="o_cont" placeholder="옵션내용" /></td>'
-							+ '<td><input type="number" name="o_stock" placeholder="옵션재고" value="0" /></td></tr>');
+		$('#optionTable > tbody:last').append('<tr><td><input id="opTable1" type="text" name="o_title" placeholder="옵션제목" /></td>'
+							+ '<td><input id="opTable2" type="text" name="o_cont" placeholder="옵션내용" /></td>'
+							+ '<td><input id="opTable3" type="number" name="o_stock" placeholder="옵션재고" value="0" /></td></tr>');
 	});
 
 	$('#delOption').click(function() {
@@ -112,18 +127,20 @@ $(function() {
 });
 
 // 이미지 관련 처리
-var feedback = function(res) {
-	if (res.success === true) {
-		document.querySelector('.status').classList.add('bg-success');
-		document.querySelector('.status').innerHTML = res.data.link;
-	}
-};
-
-new Imgur({
-	clientid : '7ff152b0e154c31', /* http://imgur.com/ 에서 아이디를 만들어 발급했음  */
-	callback : feedback
-// TODO: 사진을 업로드하면 사진은 imgur서버상에 존재... 그러나 웹 사이트 계정에선 확인 불가...
-});
+   $(document).ready(function() {
+		var feedback = function(res) {
+			if (res.success === true) {
+				document.querySelector('.status').classList.add('bg-success');
+				document.querySelector('.status').innerHTML = res.data.link;
+			}
+		};
+		
+		new Imgur({
+			clientid : '7ff152b0e154c31', /* http://imgur.com/ 에서 아이디를 만들어 발급했음  */
+			callback : feedback
+		// TODO: 사진을 업로드하면 사진은 imgur서버상에 존재... 그러나 웹 사이트 계정에선 확인 불가...
+		});
+   });
 </script>
 
 </head><!-- -------------------------------------------------------------- -->
@@ -329,13 +346,15 @@ new Imgur({
 												</div>
 											</div>										 
 											
+											<!-- -------------------------------------------------------------- --> 
 											 
-											 <hr>
 											 <div class="control-group">
 											 	<label for="b_email">이미지</label>
+											 	
 											 	<div class="col-md">
 													<div class="dropzone"></div>
 												</div>
+												
 												<div class="controls" id="b_email">
 													<!-- <label>대표 이미지</label><br/> -->
 													<input class="input-xlarge" type="text" class="i_set" id="p_img" name="p_img" placeholder="메인 이미지 "/><br/>
