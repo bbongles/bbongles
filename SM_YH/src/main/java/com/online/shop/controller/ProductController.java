@@ -22,13 +22,13 @@ public class ProductController {
 	
 	@Autowired 
 	ProductService productService;
-	
+	/*
 	@RequestMapping(value="pRegister", method=RequestMethod.GET)
 	public void registerGET() {
 	} // end registerGET()
 	
-	
-	@RequestMapping(value="pRegister2", method=RequestMethod.GET)
+	*/
+	@RequestMapping(value="pRegister", method=RequestMethod.GET)
 	public String pRegisterGET() {
 		return "UI/sudo_product_register";
 	} // end registerGET()
@@ -83,8 +83,8 @@ public class ProductController {
 			int iResult = productService.createImage(iVo);
 		}
 		
-		return "redirect:pList";
-		
+		/*return "redirect:pList";*/
+		return "redirect:main";
 	} // end registerPOST()
 	
 	/*----------------------------------------------------------------------------*/
@@ -105,7 +105,8 @@ public class ProductController {
 		}
 		attr.addFlashAttribute("p_no", p_no);
 		
-		return "redirect:pList";
+		/*return "redirect:pList";*/
+		return "redirect:main";
 	}
 	/*----------------------------------------------------------------------------*/
 
