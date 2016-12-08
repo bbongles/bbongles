@@ -113,13 +113,13 @@
 							</div>
 							<div class="span5">
 								<form class="form-inline">
-									<label class="checkbox">
+									<!-- <label class="checkbox">
 										<input type="checkbox" value=""> Option one is this and that
 									</label>
 									<br/>
 									<label class="checkbox">
 									  <input type="checkbox" value=""> Be sure to include why it's great
-									</label>
+									</label> -->
 									<p>&nbsp;</p>
 									<label>Qty:</label>
 									<input type="text" class="span1" placeholder="1">

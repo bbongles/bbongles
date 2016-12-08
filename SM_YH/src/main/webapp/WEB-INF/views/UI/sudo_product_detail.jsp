@@ -43,7 +43,8 @@
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
 	</head>
-    <body>		
+    <body>	
+    	
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
@@ -63,6 +64,7 @@
 				</div>
 			</div>
 		</div>
+	
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
@@ -95,16 +97,22 @@
 			<img class="pageBanner" src="<c:url value='/resources/themes/images/pageBanner.png' />" alt="New products" >
 				<h4><span>Product Detail</span></h4>
 			</section>
-			<section class="main-content">				
+			<section class="main-content">	
+					
 				<div class="row">	
 				
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
-								
+					<form id="frm">
+						<!-- 삭제하기 위한 정보 -->
+						<input type="hidden" name="p_no" value="${productVO.p_no }" />    
+    					<input type="hidden" name="s_id" value="${productVO.s_id }" />
+					
 					<div class="span9">
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
+				
 						
 						<div class="row">	<!-- 저품 메인정보 : 제품 메인사진 / 제품명 / 제품 정보  -->
 						
@@ -165,7 +173,7 @@
 					    				</c:forEach>
 					    			</select>
 								</div>
-								<form class="form-inline">
+								<div class="form-inline">
 									<!-- 
 										<label class="checkbox">
 											<input type="checkbox" value=""> Option one is this and that
@@ -179,7 +187,7 @@
 									<label>Quantity : </label>
 									<input type="number" name="buy_cnt" class="span1" placeholder="1">
 									<button class="btn btn-inverse" type="submit">Add to cart</button><!-- TODO  -->
-								</form>
+								</div>
 							</div>	
 								
 												
@@ -224,7 +232,7 @@
 									
 									<!-- 세번째 탭 -->
 									<div class="tab-pane active" id="tab3">
-										Q&A
+										123456789!@#$%^
 									</div>
 									
 								</div>	
@@ -340,7 +348,7 @@
 					<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
 					<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
 					</div>
-					
+					</form>
 					<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
 					<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
 					<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->	
@@ -430,8 +438,10 @@
 						</div>
 					</div>
 				</div>
+				
 			</section>			
 			<section id="footer-bar">
+			
 				<div class="row">
 					<div class="span3">
 						<h4>Navigation</h4>
@@ -469,6 +479,7 @@
 				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
 			</section>
 		</div>
+
 		<script src="<c:url value='/resources/themes/js/common.js' />"></script>
 		<script>
 			$(function () {
