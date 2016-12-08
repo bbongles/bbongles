@@ -30,7 +30,9 @@ public interface BuyerDAO {
 	
 	public abstract List<CartandBuy> selectBybuyCompleteMain(String b_id);
 	
+	public abstract List<CartandBuy> selectByOrderMain(String b_id);
 	
+	public abstract List<CartandBuy> selectByBuyCompleteMain2(String b_id);
 	// --------------------
 	
 	

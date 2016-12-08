@@ -76,5 +76,33 @@ public class MypageRESTController {
 		return entity;
 	}
 	
+	@RequestMapping(value="all5/{id}", method=RequestMethod.GET)
+	public ResponseEntity<List<CartandBuy>>  readOrderMain(@PathVariable("id") String b_id){
+		logger.info("b_id = " + b_id);
+		List<CartandBuy> list = buyerservice.readordermain(b_id);
+		logger.info("List.name : " + list.get(0).getB_name());
+		
+		ResponseEntity<List<CartandBuy>> entity = null;
+		if (list != null){
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
+		} 
+		return entity;
+	}
+	
+	@RequestMapping(value="all6/{id}", method=RequestMethod.GET)
+	public ResponseEntity<List<CartandBuy>>  readCompleteMain2(@PathVariable("id") String b_id){
+		logger.info("b_id = " + b_id);
+		List<CartandBuy> list = buyerservice.readCompleteMain2(b_id);
+		logger.info("List.name : " + list.get(0).getB_name());
+		
+		ResponseEntity<List<CartandBuy>> entity = null;
+		if (list != null){
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
+		} 
+		return entity;
+	}
+	
+	
+	
 	
 }

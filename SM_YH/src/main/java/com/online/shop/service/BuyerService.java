@@ -31,5 +31,11 @@ public interface BuyerService {
 	// 구매 완료 내역
 	public abstract List<CartandBuy> readCompleteMain(String b_id);
 	
+	// 전체 구매 내역
+	public abstract List<CartandBuy> readordermain(String b_id);
+	
+	// 전체 구매 완료 내역
+	public abstract List<CartandBuy> readCompleteMain2(String b_id);
+	
 	
 }

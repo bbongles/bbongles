@@ -62,4 +62,15 @@ public class BuyerServiceImple implements BuyerService {
 	public List<CartandBuy> readCompleteMain(String b_id) {
 		return buyerDao.selectBybuyCompleteMain(b_id);
 	}
+	
+	@Override
+	public List<CartandBuy> readordermain(String b_id) {
+		return buyerDao.selectByOrderMain(b_id);
+	}
+	
+	@Override
+	public List<CartandBuy> readCompleteMain2(String b_id) {
+		return buyerDao.selectByBuyCompleteMain2(b_id);
+	}
+	
 }

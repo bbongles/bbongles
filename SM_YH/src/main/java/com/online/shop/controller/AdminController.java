@@ -239,7 +239,7 @@ public class AdminController {
 			
 	}
 	
-	//판매자 승인 요청 콘트롤러
+	//판매물 승인 요청 콘트롤러
 		@RequestMapping(value="/admin/productAcc", method=RequestMethod.GET)
 		public void updateProductAcc(int p_no, HttpServletResponse response) throws IOException{
 			logger.info("updateAcc 실행");

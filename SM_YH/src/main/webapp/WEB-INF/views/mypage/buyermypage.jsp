@@ -102,7 +102,7 @@
 
 							</div>
 							<div class="control-group">
-								<label class="control-label"><a href="#">구매 내역</a></label>
+								<label class="control-label"><a href="buyermypage_completelist">구매 내역</a></label>
 							</div>
 							
 							</fieldset>
@@ -292,7 +292,7 @@ $(document).ready(function() {
 				}
 				 
 				
-				 td += '<tr><td id="buyno">' + this.buy_no + '</td>'
+				 td += '<tr><td>' + this.buy_no + '</td>'
 					+ '<td>' + dateString + '</td>'
 					+ '<td>' + this.p_name + '&emsp;(' + this.o_cont + ')</td>'
 				+ '<td>' + this.s_id + '&emsp;</td>'

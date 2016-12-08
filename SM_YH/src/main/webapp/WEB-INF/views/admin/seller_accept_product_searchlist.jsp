@@ -97,7 +97,7 @@
 		</section>
 		<section class="main-content">
 			<div class="row">
-				<div class="span5">
+				<div class="span5 sp">
 					<h3 class="title">
 						<span class="text"><strong>판매물</strong> 승인 내역</span>
 					</h3>

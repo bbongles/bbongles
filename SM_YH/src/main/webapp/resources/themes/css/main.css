@@ -164,7 +164,7 @@ input, button, select, textarea{
 	font-size: 14px;
 }
 
-div.span5{
+div.sp{
 	width: 25%;
 }
 /*  --------여기까지  */
@@ -1101,7 +1101,10 @@ button.detail:hover {
 
 
 /* buyr, buyf의 테이블 정렬 부분  */
-.pricea {
+
+
+ .tbl_price {
+
 	text-align: right; 
 }
 .buyrt th{

@@ -139,7 +139,7 @@
 							</div> 
 							<div id="maindiv" class="control-group">
 							<table id="ordert">
-									<caption><b>[주문 배송 내역]</b></caption>
+									<caption><b>주문 배송 내역</b></caption>
 									<tr>
 										<th>주문번호</th>
 										<th>주문일자</th>
@@ -148,7 +148,26 @@
 										<th>주문상태</th>
 									</tr>		
 							</table>
-						
+						<ul class="pageLinks" >
+			<li>-</li>
+			<c:if test="${pageMaker.hasPrev }">
+				<li id="page"><a href="${pageMaker.startPageNum - 1 }">&laquo;이전</a></li>
+			</c:if>
+
+			<c:forEach begin="${pageMaker.startPageNum }"
+				end="${pageMaker.endPageNum }" var="num">
+				<li id="page"><a href="${num }">${num }</a></li>
+			</c:forEach>
+
+			<c:if test="${pageMaker.hasNext }">
+				<li id="page"><a href="${pageMaker.endPageNum + 1 }">다음&raquo;</a></li>
+			</c:if>
+			<li>-</li>
+		</ul>
+		
+		<%-- 현재 페이지, 페이지 당 보여줄 게시글 개수를 서버로 보내주기 위해서,
+사용자에게는 보이지 않지만, 서버로 보낼 정보를 양식 데이터로 저장하는 form --%>
+		
 							
 							
 							
@@ -160,8 +179,14 @@
 
 						</fieldset>
 					</form> 
+					
 						<hr>
 				</div>
+				<form id="pageForm">
+			
+			<input type="hidden" name="page" value="${pageMaker.criteria.page }" /> 
+			<input type="hidden" name="perPage" value="${pageMaker.criteria.perPage }" />
+		</form>
 			</div>
 		</section>
 		<section id="footer-bar">
@@ -205,6 +230,71 @@
 	
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	var b_id = 'buyerId';
 
+	getOrderList();
+	
+	function getOrderList() {
+		var url = '/shop05/userid/all5/' + b_id;
+		$.getJSON(url, function(data) {
+			var td = '';
+			
+			
+			$(data).each(function(){ 
+				console.log(this);
+				var date = new Date(this.buy_date);
+				var year = date.getFullYear();
+				var month = date.getMonth();
+				var day = date.getDate();
+				var dateString = year + '년' + month + '월' + day + '일';
+				
+				var a = ''; 
+				if (this.buy_status == 0){
+					a = '입금대기'
+				} else if (this.buy_status == 1){
+					a = '결제확인중'
+				} else if (this.buy_status == 2){
+					a = '결제완료'
+				} else if (this.buy_status == 3){ 
+					a = '배송준비'
+				}
+				 
+				
+				 td += '<tr><td>' + this.buy_no + '</td>'
+					+ '<td>' + dateString + '</td>'
+					+ '<td>' + this.p_name + '&emsp;(' + this.o_cont + ')</td>'
+				+ '<td>' + this.s_id + '&emsp;</td>'
+				+ '<td>' + a + '</td></tr>';
+				
+				
+			});
+			
+			$('#ordert > tbody:last').append(td);
+		});
+	};  
+	
+	var frm = $('#pageForm');
+
+	// 클래스 pageLinks 안의 li 태그 안의 a 태그를 찾아서 click 이벤트를 커스터마이징
+	$('.pageLinks li a').click(function() {
+		event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
+		// pageForm 안에 있는 name="page"인 요소를 찾아서
+		// 이동할 페이지 번호를 세팅
+		var targetPage = $(this).attr('href');
+		console.log('targetPage=' + targetPage);
+		frm.find('[name="page"]').val(targetPage);
+		// 페이징 화면으로 보내기 위한 action 정보
+		frm.attr('action', 'listview');
+		// 페이징 화면을 처리하는 Controller의 method(요청 처리 방식)
+		frm.attr('method', 'get');
+		// 폼 양식을 서버로 전송
+		frm.submit();
+	});
+	
+});
+</script>
 
 </html>

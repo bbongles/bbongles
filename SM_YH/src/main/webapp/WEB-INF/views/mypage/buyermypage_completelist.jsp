@@ -138,6 +138,19 @@
 								
 							</div> 
 							<div id="maindiv" class="control-group">
+							<table id="completet">
+									<caption>
+										<b> 구매 내역 </b>
+									</caption>
+									<tr>
+										<th>주문번호</th>
+										<th>주문일자</th>
+										<th>상품명(옵션)</th>
+										<th>판매자</th>
+										<th>주문상태</th>
+									</tr>
+									
+							</table>
 							
 						
 							
@@ -196,6 +209,47 @@
 	
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	var b_id = 'buyerId';
 
+	getCompleteList();
+	
+	function getCompleteList() {
+		var url = '/shop05/userid/all6/' + b_id;
+		$.getJSON(url, function(data) {
+			var td = '';  	  	
+			
+			$(data).each(function(){ 
+				console.log(this);
+				var date = new Date(this.buy_date);
+				var year = date.getFullYear();
+				var month = date.getMonth();
+				var day = date.getDate();
+				var dateString = year + '년' + month + '월' + day + '일';
+				
+				var a = ''; 
+				if (this.buy_status == 4){
+					a = '배송중'
+				} else if (this.buy_status == 5){
+					a = '배송완료'
+				}
+				 
+				
+				 td += '<tr><td>' + this.buy_no + '</td>'
+					+ '<td>' + dateString + '</td>'
+					+ '<td>' + this.p_name + '&emsp;(' + this.o_cont + ')</td>'
+				+ '<td>' + this.s_id + '&emsp;</td>'
+				+ '<td>' + a + '</td></tr>';
+				
+				
+			}); 
+			$('#completet > tbody:last').append(td);
+		});
+	};  
+});
+</script>
 
+	
 </html>

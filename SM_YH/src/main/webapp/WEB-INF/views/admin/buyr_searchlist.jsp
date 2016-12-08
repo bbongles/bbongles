@@ -97,7 +97,7 @@
 		</section>
 		<section class="main-content">
 			<div class="row">
-				<div class="span5">
+				<div class="span5 sp">
 					<h3 class="title">
 						<span class="text"><strong>판매</strong> 관리</span>
 					</h3>
@@ -198,7 +198,7 @@
 											<td class="buy_date"><fmt:formatDate value="${list.buy_date }"
 													pattern="yyyy년 MM월 dd일" />&emsp;&emsp;</td>
 											<td>${list.p_name }&emsp;(${list.o_cont })</td>
-											<td class="pricea">${list.p_price }원</td>
+											<td class="tbl_price">${list.p_price }원</td>
 											<td>${list.s_id }&emsp;</td>
 
 											<td>${list.b_id }&emsp;</td>

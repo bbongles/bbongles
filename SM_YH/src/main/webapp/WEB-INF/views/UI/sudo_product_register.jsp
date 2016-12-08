@@ -382,25 +382,38 @@ var x=0;
 				<img src="<c:url value='/resources/themes/images/logo.png' />"
 					class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
-					<ul>
-						<li><a href="./products.html">Woman</a>
-							<ul>
-								<li><a href="./products.html">Lacinia nibh</a></li>
-								<li><a href="./products.html">Eget molestie</a></li>
-								<li><a href="./products.html">Varius purus</a></li>
-							</ul></li>
-						<li><a href="./products.html">Man</a></li>
-						<li><a href="./products.html">Sport</a>
-							<ul>
-								<li><a href="./products.html">Gifts and Tech</a></li>
-								<li><a href="./products.html">Ties and Hats</a></li>
-								<li><a href="./products.html">Cold Weather</a></li>
-							</ul></li>
-						<li><a href="./products.html">Hangbag</a></li>
-						<li><a href="./products.html">Best Seller</a></li>
-						<li><a href="./products.html">Top Seller</a></li>
-					</ul>
-				</nav>
+						<ul>
+							<li><a href="./products.html">Home / Deco</a>					
+								<ul>
+									<li><a href="./products.html">furniture</a></li>	<!-- 가구 -->									
+									<li><a href="./products.html">pottery</a></li>		<!-- 도자기 -->		
+									<li><a href="./products.html">lamp</a></li>			<!-- 조명 -->									
+								</ul>
+							</li>															
+							<li><a href="./products.html">Candle / Diffuser</a>
+								<ul>
+									<li><a href="./products.html">candle</a></li>			<!-- 양초 -->										
+									<li><a href="./products.html">diffuser</a></li>			<!-- 디퓨저 -->
+									<li><a href="./products.html">aromatic oils</a></li>	<!-- 아로마오일 -->									
+								</ul>		
+								</li>	
+							<li><a href="./products.html">Art / Fancy</a>
+								<ul>									
+									<li><a href="./products.html">picture</a></li>		<!-- 사진 -->
+									<li><a href="./products.html">fancy</a></li>		<!-- 문구 -->
+									<li><a href="./products.html">paper</a></li>		<!-- 페이퍼 -->
+								</ul>
+							</li>							
+							<li><a href="./products.html">Jewellery</a>
+								<ul>									
+									<li><a href="./products.html">earring</a></li>		<!-- 귀걸이 -->
+									<li><a href="./products.html">necklace</a></li>		<!-- 목걸이 -->
+									<li><a href="./products.html">ring</a></li>			<!-- 반지 -->
+								</ul>
+							</li>
+							<li><a href="./products.html">Event</a></li>
+						</ul>
+					</nav>
 			</div>
 		</section>
 		<section class="header_text sub">
@@ -562,6 +575,7 @@ var x=0;
 	
 														<a href="#" class="btn-example" onclick="layer_open('layer1');return false;">
 														<input type="button" id="btn0" value="파일첨부" class="btn" ></a>
+														
 															<div id="layer1" class="pop-layer">
 																<div class="pop-container">
 																	<div class="pop-conts">
@@ -653,8 +667,9 @@ var x=0;
 												<input tabindex="9" class="btn btn-inverse large" type="submit" value="등록">
 												<input tabindex="9" class="btn btn-inverse large" type="reset" value="취소">
 												 -->
-												 <input tabindex="9" id="btn_insert" class="btn btn-inverse large" type="button" value="등록">
-												<input tabindex="9" id="btn_reset" class="btn btn-inverse large" type="button" value="취소">
+												 <input tabindex="9" id="btn_insert" class="btn btn-inverse large" type="button" value="Commit">
+												<input tabindex="9" id="btn_reset" class="btn btn-inverse large" type="button" value="Reset">
+												<input onclick="location.href='main'" class="btn btn-inverse" type="button" id="gotoList" value="Home" />
 												
 											</div>	<br/>
 											
