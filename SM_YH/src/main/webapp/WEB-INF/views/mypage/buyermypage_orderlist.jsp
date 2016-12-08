@@ -138,7 +138,16 @@
 								
 							</div> 
 							<div id="maindiv" class="control-group">
-							
+							<table id="ordert">
+									<caption><b>[주문 배송 내역]</b></caption>
+									<tr>
+										<th>주문번호</th>
+										<th>주문일자</th>
+										<th>상품명(옵션)</th>
+										<th>판매자</th>
+										<th>주문상태</th>
+									</tr>		
+							</table>
 						
 							
 							

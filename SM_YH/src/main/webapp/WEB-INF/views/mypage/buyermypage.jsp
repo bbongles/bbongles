@@ -152,17 +152,22 @@
 								
 							</div> 
 							<div id="maindiv" class="control-group">
-							<table id="ordertitle">
-							<caption><b>[주문 배송 내역]</b></caption><tr><th>주문번호</th><th>주문일자</th><th>상품명(옵션)</th><th>판매자</th><th>주문상태</th></tr>
-							</table>
+							
+							
+							
 							<table id="ordert">
-									
-											
-									
+									<caption><b>[주문 배송 내역] (최근 5건)</b></caption>
+									<tr>
+										<th>주문번호</th>
+										<th>주문일자</th>
+										<th>상품명(옵션)</th>
+										<th>판매자</th>
+										<th>주문상태</th>
+									</tr>		
 							</table>
-							<table id="completetile">
-							<caption>
-										<b>[구매 내역]</b>
+							<table id="completet">
+									<caption>
+										<b>[구매 내역] (최근 5건)</b>
 									</caption>
 									<tr>
 										<th>주문번호</th>
@@ -171,9 +176,6 @@
 										<th>판매자</th>
 										<th>주문상태</th>
 									</tr>
-							</table>
-							<table id="completet">
-									
 									
 							</table>
 							
@@ -299,7 +301,7 @@ $(document).ready(function() {
 				
 			});
 			
-			$('#ordert').html(td);
+			$('#ordert > tbody:last').append(td);
 		});
 	};  
 	
@@ -331,8 +333,8 @@ $(document).ready(function() {
 				+ '<td>' + a + '</td></tr>';
 				
 				
-			});
-			$('#completet').html(td);
+			}); 
+			$('#completet > tbody:last').append(td);
 		});
 	};  
 	 

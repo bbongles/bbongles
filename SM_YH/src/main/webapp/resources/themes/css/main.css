@@ -1101,7 +1101,7 @@ button.detail:hover {
 
 
 /* buyr, buyf의 테이블 정렬 부분  */
- .pricea {
+.pricea {
 	text-align: right; 
 }
 .buyrt th{
@@ -1176,21 +1176,13 @@ button.detail:hover {
 .control-buyer{
 	margin-left: 12%;
 }
-#ordert{
- 
+#ordert{ 
 	text-align: center;
-}
-#buyno{
-	width: 10%;
-}
-#ordertitle{
-	width: 5%;
+
 }
 #completet{
-	width: 10px;
 	text-align: center;
+	
 }
-#completetitle{
-	width: 10px;
-}
+ 
 
