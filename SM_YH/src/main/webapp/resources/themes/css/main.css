@@ -1101,7 +1101,7 @@ button.detail:hover {
 
 
 /* buyr, buyf의 테이블 정렬 부분  */
- .pricea {
+ .tbl_price {
 	text-align: right; 
 }
 .buyrt th{

@@ -167,7 +167,7 @@
 											<td class="buy_date"><fmt:formatDate value="${list.buy_date }"
 													pattern="yyyy년 MM월 dd일" />&emsp;&emsp;</td>
 											<td class="p_name">${list.p_name }&emsp;(${list.o_cont })</td>
-											<td class="pricea">${list.p_price }원</td>
+											<td class="tbl_price">${list.p_price }원</td>
 											<td>판매자ID&emsp;</td>
 											<td>${list.b_id }&emsp;</td>
 											<td>배송완료</td>
