@@ -78,7 +78,6 @@ textarea {
 
 		<!-- 상품명 -->
 		<label>상품명</label> <input type="text" name="p_name" required /><br/>
-
 		<!-- 상품가격 -->
 		<label>상품가격</label> <input type="number" name="p_price" required /><br/>
 

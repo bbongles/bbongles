@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>H-Shopper : 특별함을 전하는</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 
  <!--  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">  -->
     <link href="<c:url value='/resources/build/imgur.min.css'/>" rel="stylesheet" media="screen"><!-- *** 수정 *** -->
+    
     <style>
 
         .col-md {
@@ -109,14 +110,9 @@
 <script src="<c:url value='/resources/themes/js/superfish.js' />"></script>
 <script src="<c:url value='/resources/themes/js/jquery.scrolltotop.js' />"></script>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-
-<script type="text/javascript" src="<c:url value='/resources/build/imgur.min.js'/>"></script><!-- *** 수정 *** -->
-    <script type="text/javascript">
-
+<script type="text/javascript" src="<c:url value='/resources/build/imgur.min.js'/>"></script>
+    <script>
 $(function() {
 	$("select[name=p_cate1]").change(function() {
 		var temp = $("select[name=p_cate2]");
@@ -167,33 +163,134 @@ $(function() {
 
 
 
-var x = 0;
+var y = 1;
 // 이미지 양식 추가 및 삭제
 $(function() {
 	$('#addImage').click(function() {
-		x++;
-		$('#imageTable > tbody:last').append('<tr><td><input type="text" class="i_set input-xlarge" id="'+ x + ' i_img" name="i_img" placeholder="각 이미지의 URL을 넣어주세요..."/><br/>' 
-							+ '<textarea rows="5" cols="65" class="i_set input-xlarge" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>');
+		/*  
+								<tr class="form-inline">
+														
+									<td>
+									
+											<input class="input-xlarge" type="text" class="i_set" id="1_img" name="i_img" placeholder="상세 이미지"/>
+									</td>
+									<td>
+											<input id="btn2" type="button" value="파일첨부"  onclick="layer_open('layer1');return false;">
+											
+									</td>
+									
+								</tr>	
+								
+								<tr>			
+									<td>		
+											<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea>
+									</td>
+								</tr>
+		*/
+		y++;
+		/* $('#imageTable > tbody:last').append('<tr class="form-inline"><td><input class="input-xlarge" type="text" class="i_set" id="'+ x + '_img" name="i_img" placeholder="상세 이미지"/><td/>' 
+				+'<td><input id="btn2" type="button" value="파일첨부"  onclick="layer_open(\'layer1\');return false;"></td></tr>'
+				+ '<tr><td colspan="2"><textarea rows="5" cols="65" class="i_set input-xlarge" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>'); */
+		/* $('#imageTable > tbody:last').append('<tr><td><div class="form-inline"><input type="text" class="i_set input-xlarge" id="'+ x + '_img" name="i_img" placeholder="상세이미지"/><br/>' 
+							+ '<textarea rows="5" cols="65" class="i_set input-xlarge" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>'); */
+							
+							$('.append').append('<div class="plus" ><div class="form-inline"><input class="input-xlarge" type="text" class="i_set" id="'+ y + '_img" name="i_img" placeholder="상세 이미지"/>'
+									+'<input id="btn'+ y +'" class="btn" data-btn="'+y+'" type="button" value="파일첨부"  onclick="layer_open(\'layer1\');return false;"></div><div>'
+									+'<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></div></div>');			
 	});
 	
 	$('#delImage').click(function() {
-		if(x >= 1) {
-			x--;
-			$('#imageTable > tbody:last > tr:last').remove();
+		if(y >= 2) {
+			y--;
+			/* $('#imageTable > tbody:last > tr:last').remove(); */
+			$('.plus:last').remove();
 		};
 	});
 });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* 
+ $(document).ready(function(){
+	$('.append_btn').click(function() {
+		if ('.append_btn'. == "#" +x+' img')
+		 console.log("#" +x+' img') 
+		x = x;
+		 console.log("#" +x+' img') 
+	});
+	
+});  
+ */
+/* 
+$(document).ready(function(){
+    $('#btn'+ x).click(function() {
+		 console.log("#" +x+' img') 
+		x = x;
+		 console.log("#" +x+' img') 
+	});
+});
+ */
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var x=0;
 // 이미지 관련 처리
-   $(document).ready(function() {
+    
+    $(document).ready(function(){
+    	 
+		$('#btn0').click(function() {
+			 console.log("#" +x+' img') 
+			x = 0;
+			 console.log("#" +x+' img') 
+		});
+		
+	  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    	$('#target').on('click','.form-inline .btn',function(){
+    		console.log($(this));
+    		console.log("btn:"+ $(this).data("btn"));
+    		var btnnum = $(this).data("btn");
+    		x= btnnum;
+    	});
+    	
+ /*    	$('.form-inline').on('click','.btn',function(){
+    		console.log($(this));
+    		console.log($(this).data("btn"));
+    	});
+    
+	    $('#btn1').click(function() {
+			 console.log("#" +x+' img') 
+			x = 1;
+			 console.log("#" +x+' img') 
+		});
+    
+ 	    $('#btn2').click(function() {
+ 			 console.log("#" +x+' img') 
+ 			x = 2;
+ 			 console.log("#" +x+' img') 
+ 		});
+     
+ 	    $('#btn3').click(function() {
+ 			 console.log("#" +x+' img') 
+ 			x = 3;
+ 			 console.log("#" +x+' img') 
+ 		}); */
+     }); 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $(document).ready(function() { 
 		var feedback = function(res) {
 			if (res.success === true) {
 				document.querySelector('.status').classList.add('bg-success');
 				/* document.querySelector('.status').innerHTML = res.data.link; */
-				 console.log(res.data.link); // F12 로그
-	                $('#p_img').val(res.data.link); 														
-	                $('.layer').fadeOut();
+				/*  console.log(res.data.link);  */// F12 로그
+				  console.log("#" +x+' img') // #0 img
+	              /*   $('#'+x+' img').val(res.data.link);  */
+				  $('#'+x+'_img').val(res.data.link); 
+				  $('#layer1').fadeOut(50);  // TODO : 입력시 사라지게 하기 ***
+				
+			/* 	alert("!!!"); */
+				 
 			}
+			
 		};
 		
 		new Imgur({
@@ -201,7 +298,7 @@ $(function() {
 			callback : feedback
 		// TODO: 사진을 업로드하면 사진은 imgur서버상에 존재... 그러나 웹 사이트 계정에선 확인 불가...
 		});
-   });
+    }); 
    
    $(function() {
 	   $("#btn_insert").click(function() {
@@ -217,13 +314,7 @@ $(function() {
    });
    
    // ****** 이미지로더
-   
-   $(document).ready(function(){
-	
-		$('.image-loader').click(function() {
-			window.open("../seller/logoPop", 'window', 'width=400, height=200, resizable=no');
-		});
-	});
+
 </script>
 
 <script type="text/javascript">
@@ -418,7 +509,6 @@ $(function() {
 											</div>
 											
 											<!-- -------------------------------------------------------------- -->
-											
 										</div>
 
 
@@ -440,18 +530,18 @@ $(function() {
 													
 													<table id="optionTable">
 														<tr>
-															<td><input id="opTable1" type="text" name="o_title" placeholder="옵션제목" /></td>
+															<td><input id="opTable1" class="detail_i" type="text" name="o_title" placeholder="옵션제목" /></td>
 															<td><input id="opTable2" type="text" name="o_cont" placeholder="옵션내용" /></td>
 															<td><input id="opTable3" type="number" name="o_stock" placeholder="옵션재고" value="0" /></td>
 														</tr>
 														<tbody></tbody>
 													</table>
-													<button id="addOption" type="button">옵션추가</button>
-													<button id="delOption" type="button">옵션삭제</button>
+													<button id="addOption" class="btn" type="button">옵션추가</button>
+													<button id="delOption" class="btn" type="button">옵션삭제</button>
 													
 												</div>
 											</div>	
-										
+									
 											
 																						
 										<!-- -------------------------------------------------------------- --> 
@@ -459,22 +549,24 @@ $(function() {
 										
 											 <div class="control-group">
 											 <br>
-											 	<label for="b_email">이미지</label>
+											 	<label for="b_email">메인 이미지</label>
 												
 												<div class="controls">
+													
+																	
 													<!-- <label>대표 이미지</label><br/> -->
 													<div class="form-inline">
-														<input class="input-xlarge" type="text" class="i_set" id="p_img" name="p_img" placeholder="메인 이미지 "/>
+														<input class="input-xlarge" type="text" class="i_set" id="0_img" name="p_img" placeholder="메인 이미지 "/>
 														
 														<!-- **레이어 팝업** -->
 	
 														<a href="#" class="btn-example" onclick="layer_open('layer1');return false;">
-														<input type="button" value="파일첨부" ></a>
+														<input type="button" id="btn0" value="파일첨부" class="btn" ></a>
 															<div id="layer1" class="pop-layer">
 																<div class="pop-container">
 																	<div class="pop-conts">
 																	
-																	<!--content //-->&&
+																	
 																	
 																		<p class="ctxt mb20">Imgur Image Loader.</p><br>
 																		
@@ -484,66 +576,67 @@ $(function() {
 																        </div>
 																			
 																		
-																	<div class="btn-r">
-																		<a href="#" class="cbtn">Close</a>
+																		<div class="btn-r">
+																			<a href="#" class="cbtn">Close</a>
+																		</div>
+																
 																	</div>
-																<!--// content-->
 																</div>
 															</div>
-														</div>
 	
 														
 														<!-- **레이어 팝업** -->
 													</div>
-													
+												</div>
+											 </div>
+											 	
 													<br/>
-													
+											<div class="control-group parent" id="target">
+											 	<label >상세 이미지</label>
+												
+												<div class="controls append">		
+													<div class="form-inline">
+														<input class="input-xlarge" type="text" class="i_set btn" id="1_img" name="i_img" placeholder="상세 이미지"/>
+														
+														<input id="btn1" type="button" data-btn="1" class="btn" value="파일첨부"  onclick="layer_open('layer1');return false;">
+														<!-- **레이어 팝업** -->
+	
+														<!-- **레이어 팝업** -->
+													</div>
+													<div>
+														<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea>
+													</div>
+												
+												<!-- 
 													<table id="imageTable"  >
-														<tr>
+													 	<tbody>
+														<tr class="form-inline">
+														
 															<td>
 																<div class="form-inline">
-																	<input class="input-xlarge" type="text" class="i_set" id="i_img" name="i_img" placeholder="상세 이미지"/>
-																	<!-- **레이어 팝업** -->
-	
-																	<a href="#" class="btn-example" onclick="layer_open('layer1');return false;">
-																	<input type="button" value="파일첨부" ></a>
-																		<div id="layer1" class="pop-layer">
-																			<div class="pop-container">
-																				<div class="pop-conts">
-																				
-																				<!--content //-->
-																				
-																					<p class="ctxt mb20">Imgur Image Loader.</p><br>
-																					
-																					
-																					<div class="col-md">
-																			       		<div class="dropzone"></div>
-																			        </div>
-																						
-																					
-																				<div class="btn-r">
-																					<a href="#" class="cbtn">Close</a>
-																				</div>
-																			<!--// content-->
-																			</div>
-																		</div>
-																	</div>
-																	
-				
-																	
-																	<!-- **레이어 팝업** -->
+																	<input class="input-xlarge" type="text" class="i_set" id="1_img" name="i_img" placeholder="상세 이미지"/>
+															</td>
+															<td>
+																	<input id="btn2" type="button" value="파일첨부"  onclick="layer_open('layer1');return false;">
+																	**레이어 팝업**
+															</td>
+															
+														</tr>	
+																
+																	**레이어 팝업**
 																</div>	<br/>
-																	
-																	
+														<tr>			
+															<td colsapn="2">		
 																	<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea>
 															</td>
 														</tr>
-														<tbody></tbody>
+														</tbody>
 													</table>
+													 -->
 													
-													<button id="addImage" type="button">추가</button>
-													<button id="delImage" type="button">삭제</button>
 												</div>
+												<button id="addImage" type="button">추가</button>
+													<button id="delImage" type="button">삭제</button>
 											 </div>
 											 
 											 
@@ -579,16 +672,16 @@ $(function() {
 						
 						
 	<!-- http://mylko72.maru.net/jquerylab/study/layer-popup.html#  -->					
-<!-- 						
+						
 						
 					
-						
+	<!-- 					
 <a href="#" class="btn-example" onclick="layer_open('layer1');return false;">예제-1 보기</a>
 	<div id="layer1" class="pop-layer">
 		<div class="pop-container">
 			<div class="pop-conts">
 			
-			content //
+			
 			
 				<p class="ctxt mb20">Imgur Image Loader.</p><br>
 				
@@ -601,11 +694,11 @@ $(function() {
 			<div class="btn-r">
 				<a href="#" class="cbtn">Close</a>
 			</div>
-		// content
+		
 		</div>
 	</div>
-</div>
-		 -->				
+</div> -->
+				
 						
 						
 						
