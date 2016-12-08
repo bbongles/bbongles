@@ -64,6 +64,23 @@ public class BuyerDAOImple implements BuyerDAO {
 		logger.info("b_id: " + b_id);
 		return sqlSession.selectList(NAMESPACEM + ".selectBybuymain2", b_id);
 	}
+	
+	// 구매 완료
+	@Override
+	public List<CartandBuy> selectBybuyComplete(String b_id) {
+		return sqlSession.selectList(NAMESPACEM + ".selectBybuyComplete", b_id);
+	}
 
+	// 구매 내역 조회
+	@Override
+	public List<CartandBuy> selectBybuymain(String b_id) {
+		return sqlSession.selectList(NAMESPACEM + ".selectBybuymain", b_id);
+	}
+
+	// 구매 완료 내역 조회
+	@Override
+	public List<CartandBuy> selectBybuyCompleteMain(String b_id) {
+		return sqlSession.selectList(NAMESPACEM + ".selectBybuyCompleteMain", b_id);
+	}
 	
 }

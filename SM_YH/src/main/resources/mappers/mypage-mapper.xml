@@ -6,12 +6,29 @@
  
  <mapper namespace="com.online.shop.MypageMapper">
 
-	<!-- 구매내역 알아오는 쿼리?  -->
+	<!-- 구매 진행 중인  건수 알아오는 쿼리  -->
 	<select id = "selectBybuymain2" resultType="com.online.shop.domain.CartandBuy">
 	select count(*) as count from s_tbl_buy b1, s_tbl_cart c1 where b1.b_id = #{b_id} and b1.BUY_STATUS between 0 and 3 and b1.buy_no = c1.buy_no
+	order by buy_date desc
+	</select>
+	
+	<!-- 구매 완료인  건수 알아오는 쿼리  -->
+	<select id = "selectBybuyComplete" resultType="com.online.shop.domain.CartandBuy">
+	select count(*) as count from s_tbl_buy b1, s_tbl_cart c1 where b1.b_id = #{b_id} and b1.BUY_STATUS between 4 and 5 and b1.buy_no = c1.buy_no
+	order by buy_date desc
+	</select>
+	
+	<!-- 구매 내역 조회  -->
+	<select id = "selectBybuymain" resultType="com.online.shop.domain.CartandBuy">
+	select * from s_tbl_buy b1, s_tbl_cart c1 where b1.b_id = #{b_id} and b1.BUY_STATUS between 0 and 3 and b1.buy_no = c1.buy_no
 	and rownum between 1 and 5 order by buy_date desc
 	</select>
-		
 	
+	<!-- 구매 완료 조회 -->
+	<select id = "selectBybuyCompleteMain" resultType="com.online.shop.domain.CartandBuy">
+	select * from s_tbl_buy b1, s_tbl_cart c1 where b1.b_id = #{b_id} and b1.BUY_STATUS between 4 and 5 and b1.buy_no = c1.buy_no
+	and rownum between 1 and 5 order by buy_date desc
+	</select>
+
 	
- </mapper>
+ </mapper> 

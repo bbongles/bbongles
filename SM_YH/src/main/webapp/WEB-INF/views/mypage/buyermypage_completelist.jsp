@@ -102,7 +102,7 @@
 
 							</div>
 							<div class="control-group">
-								<label class="control-label"><a href="#">구매 내역</a></label>
+								<label class="control-label"><a href="buyermypage_completelist">구매 내역</a></label>
 							</div>
 							
 							</fieldset>
@@ -128,54 +128,18 @@
 				
 				<div id="maindi" class="span7">
 					<h3 class="title">
-						<span class="text"><strong>MY </strong> 쇼핑 현황</span>
+						<span class="text"><strong>구매</strong> 내역</span>
 					</h3>
 					
 					<form action="#" method="post" class="form-stacked">
 						<fieldset class="bm">
 							<div class="control-buyer">
-								<table>
-									<tr>
-										<th>[구매 중 상품]</th>
-										<th>[구매 완료 상품]</th>
-									</tr>
-									<tr>
-										<td id="buyer1" onMouseover="this.style.color='#5f5f59';"
-											onMouseout="this.style.color='#EA9999';"
-											style="text-align: center; color: #EA9999; text-decoration: underline;"></td>
-										<td id="buyer2" onMouseover="this.style.color='#5f5f59';"
-											onMouseout="this.style.color='#EA9999';"
-											style="text-align: center; color: #EA9999; text-decoration: underline;"></td>
-
-									</tr>
-								</table>
+								
 								
 							</div> 
 							<div id="maindiv" class="control-group">
-							<table id="ordertitle">
-							<caption><b>[주문 배송 내역]</b></caption><tr><th>주문번호</th><th>주문일자</th><th>상품명(옵션)</th><th>판매자</th><th>주문상태</th></tr>
-							</table>
-							<table id="ordert">
-									
-											
-									
-							</table>
-							<table id="completetile">
-							<caption>
-										<b>[구매 내역]</b>
-									</caption>
-									<tr>
-										<th>주문번호</th>
-										<th>주문일자</th>
-										<th>상품명(옵션)</th>
-										<th>판매자</th>
-										<th>주문상태</th>
-									</tr>
-							</table>
-							<table id="completet">
-									
-									
-							</table>
+							
+						
 							
 							
 							
@@ -232,123 +196,6 @@
 	
 
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-	var b_id = 'buyerId';
-	
-	getAllbuylist();
-	getCompletebuy();
-	getOrderlist(); 
-	getCompleteList();
-	 
-	function getAllbuylist() {
-		var url = '/shop05/userid/all/' + b_id;
-		$.getJSON(url, function(data) {
-			var td = '';  	 
-			$(data).each(function(){  
-				td += this.count +'건'  
-			});
-			$('#buyer1').html(td);
-		});
-	};
-	
-	function getCompletebuy() { 
-		var url2 = '/shop05/userid/all2/' + b_id;
-		$.getJSON(url2, function(data) { 
-			var td2 = '';  
-				$(data).each(function(){  
-					td2 +=  this.count +'건'
-				});
-				$('#buyer2').html(td2);
-			});
-	};
-	
-	 function getOrderlist() {
-		var url = '/shop05/userid/all3/' + b_id;
-		$.getJSON(url, function(data) {
-			var td = '';
-			
-			
-			$(data).each(function(){ 
-				console.log(this);
-				var date = new Date(this.buy_date);
-				var year = date.getFullYear();
-				var month = date.getMonth();
-				var day = date.getDate();
-				var dateString = year + '년' + month + '월' + day + '일';
-				
-				var a = ''; 
-				if (this.buy_status == 0){
-					a = '입금대기'
-				} else if (this.buy_status == 1){
-					a = '결제확인중'
-				} else if (this.buy_status == 2){
-					a = '결제완료'
-				} else if (this.buy_status == 3){ 
-					a = '배송준비'
-				}
-				 
-				
-				 td += '<tr><td id="buyno">' + this.buy_no + '</td>'
-					+ '<td>' + dateString + '</td>'
-					+ '<td>' + this.p_name + '&emsp;(' + this.o_cont + ')</td>'
-				+ '<td>' + this.s_id + '&emsp;</td>'
-				+ '<td>' + a + '</td></tr>';
-				
-				
-			});
-			
-			$('#ordert').html(td);
-		});
-	};  
-	
-	function getCompleteList() {
-		var url = '/shop05/userid/all4/' + b_id;
-		$.getJSON(url, function(data) {
-			var td = '';  	  	
-			
-			$(data).each(function(){ 
-				console.log(this);
-				var date = new Date(this.buy_date);
-				var year = date.getFullYear();
-				var month = date.getMonth();
-				var day = date.getDate();
-				var dateString = year + '년' + month + '월' + day + '일';
-				
-				var a = ''; 
-				if (this.buy_status == 4){
-					a = '배송중'
-				} else if (this.buy_status == 5){
-					a = '배송완료'
-				}
-				 
-				
-				 td += '<tr><td>' + this.buy_no + '</td>'
-					+ '<td>' + dateString + '</td>'
-					+ '<td>' + this.p_name + '&emsp;(' + this.o_cont + ')</td>'
-				+ '<td>' + this.s_id + '&emsp;</td>'
-				+ '<td>' + a + '</td></tr>';
-				
-				
-			});
-			$('#completet').html(td);
-		});
-	};  
-	 
- 	$('#buyer1').click(function () {
-		$('#maindiv').children().hide();
-		$('#ordert').show();
-	});
- 	
-	$('#buyer2').click(function () {
-		$('#maindiv').children().hide();
-		$('#completet').show();
-	});
-	 
-	
-	
-});
-</script>
+
 
 </html>

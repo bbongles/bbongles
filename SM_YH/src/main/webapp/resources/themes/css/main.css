@@ -180,6 +180,9 @@ fieldset{
 fieldset.cf {
 	margin-left: 15%; 
 }
+fieldset.bm {
+	margin-left: 19%; 
+}
 table{
 	border-spacing: 5px;
 }
@@ -1091,7 +1094,7 @@ button.detail:hover {
 
 
 /* buyr, buyf의 테이블 정렬 부분  */
- .price {
+ .pricea {
 	text-align: right; 
 }
 .buyrt th{
@@ -1153,13 +1156,34 @@ button.detail:hover {
 }
 /* ---------------------------------------------여기까지!  */
 
-/* 구매자 마이 페이지 CSS  */
-.buyerlist:HOVER{
-	color : '#5f5f59';
+/* 구매자 마이 페이지 CSS 
+.buyerlist:hover{	
+	color : '#EA9999';
 }
 .buyerlist{
-	color: '#EA9999';
+	color: '#5f5f59';
 	text-align: center;
 	text-decoration: underline;
+}
+ */
+.control-buyer{
+	margin-left: 12%;
+}
+#ordert{
+ 
+	text-align: center;
+}
+#buyno{
+	width: 10%;
+}
+#ordertitle{
+	width: 5%;
+}
+#completet{
+	width: 10px;
+	text-align: center;
+}
+#completetitle{
+	width: 10px;
 }
 

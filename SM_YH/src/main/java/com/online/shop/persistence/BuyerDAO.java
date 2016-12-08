@@ -24,6 +24,14 @@ public interface BuyerDAO {
 	// 구매자 마이페이지
 	public abstract List<CartandBuy> selectBybuymain2(String b_id);
 	
+	public abstract List<CartandBuy> selectBybuyComplete(String b_id);
+	
+	public abstract List<CartandBuy> selectBybuymain(String b_id);
+	
+	public abstract List<CartandBuy> selectBybuyCompleteMain(String b_id);
+	
+	
+	// --------------------
 	
 	
 }

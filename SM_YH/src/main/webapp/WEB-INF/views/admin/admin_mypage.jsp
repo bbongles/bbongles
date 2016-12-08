@@ -194,16 +194,16 @@
 											<td>${list.p_name }&emsp;(${list.o_cont })</td>
 											<td>${list.s_id }&emsp;</td>
 											<td>${list.b_id }&emsp;</td>
-											<c:if test="${list.buy_status eq '0' }">
+											<c:if test="${list.buy_status eq 0 }">
 												<td>입금대기</td>
 											</c:if>
-											<c:if test="${list.buy_status eq '1' }">
+											<c:if test="${list.buy_status eq 1 }">
 												<td>결제확인중</td>
 											</c:if>
-											<c:if test="${list.buy_status eq '2' }">
+											<c:if test="${list.buy_status eq 2 }">
 												<td>결제완료</td>
 											</c:if>
-											<c:if test="${list.buy_status eq '3' }">
+											<c:if test="${list.buy_status eq 3 }">
 												<td>배송준비</td>
 											</c:if>
 										</tr>
