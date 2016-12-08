@@ -44,7 +44,6 @@ public class SellerController {
 		// 판매자 정보를 Model 객체에 넣어서 View(jsp)에 전달
 		model.addAttribute("sellerInfo", sellerInfo);
 		
-		
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
 	
 	/*----------------------------------------------------------------------------*/

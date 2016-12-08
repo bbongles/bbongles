@@ -133,7 +133,7 @@
 								<a href="${productVO.p_img }" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="${productVO.p_img }"></a>												
 								
 								<ul class="thumbnails small">	
-									<c:forEach var="imageList" items="${imageList }" begin="1" end="4">
+									<c:forEach var="imageList" items="${imageList }" begin="0" end="3">
 										<li class="span1">
 											<a href="${imageList.i_img }" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="${imageList.i_img }" alt=""></a>
 										</li>
@@ -242,7 +242,7 @@
 									</div>
 									
 									<!-- 세번째 탭 -->
-									<div class="tab-pane active" id="tab3">
+									<div class="tab-pane" id="tab3">
 										123456789!@#$%^
 									</div>
 									

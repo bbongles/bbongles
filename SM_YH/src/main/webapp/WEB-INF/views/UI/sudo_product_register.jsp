@@ -150,8 +150,8 @@ $(function() {
 //옵션 양식 추가 및 삭제
 $(function() {
 	$('#addOption').click(function() {
-		$('#optionTable > tbody:last').append('<tr><td><input id="opTable1" type="text" name="o_title" placeholder="옵션제목" /></td>'
-							+ '<td><input id="opTable2" type="text" name="o_cont" placeholder="옵션내용" /></td>'
+		$('#optionTable > tbody:last').append('<tr><td><input id="opTable1" class="detail_i" type="text" name="o_title" placeholder="옵션제목" /></td>'
+							+ '<td><input id="opTable2" class="detail_i" type="text" name="o_cont" placeholder="옵션내용" /></td>'
 							+ '<td><input id="opTable3" type="number" name="o_stock" placeholder="옵션재고" value="0" /></td></tr>');
 	});
 
@@ -167,36 +167,11 @@ var y = 1;
 // 이미지 양식 추가 및 삭제
 $(function() {
 	$('#addImage').click(function() {
-		/*  
-								<tr class="form-inline">
-														
-									<td>
-									
-											<input class="input-xlarge" type="text" class="i_set" id="1_img" name="i_img" placeholder="상세 이미지"/>
-									</td>
-									<td>
-											<input id="btn2" type="button" value="파일첨부"  onclick="layer_open('layer1');return false;">
-											
-									</td>
-									
-								</tr>	
-								
-								<tr>			
-									<td>		
-											<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea>
-									</td>
-								</tr>
-		*/
-		y++;
-		/* $('#imageTable > tbody:last').append('<tr class="form-inline"><td><input class="input-xlarge" type="text" class="i_set" id="'+ x + '_img" name="i_img" placeholder="상세 이미지"/><td/>' 
-				+'<td><input id="btn2" type="button" value="파일첨부"  onclick="layer_open(\'layer1\');return false;"></td></tr>'
-				+ '<tr><td colspan="2"><textarea rows="5" cols="65" class="i_set input-xlarge" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>'); */
-		/* $('#imageTable > tbody:last').append('<tr><td><div class="form-inline"><input type="text" class="i_set input-xlarge" id="'+ x + '_img" name="i_img" placeholder="상세이미지"/><br/>' 
-							+ '<textarea rows="5" cols="65" class="i_set input-xlarge" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></td></tr>'); */
-							
-							$('.append').append('<div class="plus" ><div class="form-inline"><input class="input-xlarge" type="text" class="i_set" id="'+ y + '_img" name="i_img" placeholder="상세 이미지"/>'
-									+'<input id="btn'+ y +'" class="btn" data-btn="'+y+'" type="button" value="파일첨부"  onclick="layer_open(\'layer1\');return false;"></div><div>'
-									+'<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></div></div>');			
+		
+		y++;		
+			$('.append').append('<div class="plus" ><div class="form-inline"><input class="input-xlarge" type="text" class="i_set" id="'+ y + '_img" name="i_img" placeholder="상세 이미지"/>'
+					+'<input id="btn'+ y +'" class="btn" data-btn="'+y+'" type="button" value="파일첨부"  onclick="layer_open(\'layer1\');return false;"></div><div>'
+					+'<textarea class="input-xlarge" rows="5" cols="65" class="i_set" name="i_cont" placeholder="이미지에 대한 설명을 넣어주세요..."> </textarea></div></div>');			
 	});
 	
 	$('#delImage').click(function() {
@@ -544,7 +519,7 @@ var x=0;
 													<table id="optionTable">
 														<tr>
 															<td><input id="opTable1" class="detail_i" type="text" name="o_title" placeholder="옵션제목" /></td>
-															<td><input id="opTable2" type="text" name="o_cont" placeholder="옵션내용" /></td>
+															<td><input id="opTable2" class="detail_i" type="text" name="o_cont" placeholder="옵션내용" /></td>
 															<td><input id="opTable3" type="number" name="o_stock" placeholder="옵션재고" value="0" /></td>
 														</tr>
 														<tbody></tbody>
