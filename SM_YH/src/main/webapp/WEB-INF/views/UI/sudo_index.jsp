@@ -419,6 +419,7 @@
 							<li><a href="#">Order History</a></li>
 							<li><a href="#">Wish List</a></li>
 							<li><a href="#">Newsletter</a></li>
+							<li><a href="pRegister">pRegister</a></li>
 						</ul>
 					</div>
 					<div class="span5">

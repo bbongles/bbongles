@@ -16,7 +16,7 @@
 		}
 	</style>
 		<meta charset="utf-8">
-		<title>Bootstrap E-commerce Templates</title>
+		<title>H-Shopper : 특별함을 전하는</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -133,7 +133,7 @@
 								<a href="${productVO.p_img }" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="${productVO.p_img }"></a>												
 								
 								<ul class="thumbnails small">	
-									<c:forEach var="imageList" items="${imageList }" begin="0" end="3">
+									<c:forEach var="imageList" items="${imageList }" begin="0" end="2">
 										<li class="span1">
 											<a href="${imageList.i_img }" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="${imageList.i_img }" alt=""></a>
 										</li>

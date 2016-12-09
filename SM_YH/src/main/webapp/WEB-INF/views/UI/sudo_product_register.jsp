@@ -33,7 +33,7 @@
 
 	</style>
 
-&
+
 <style type="text/css">
 	.pop-layer {
 		display: none;
