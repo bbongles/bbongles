@@ -32,7 +32,7 @@ public class SellerController {
 	
 	@RequestMapping(value="/pList", method=RequestMethod.GET)
 	public void sellerHome(Model model, String s_id) {
-		// 전체 상품 리스트
+		// 판매자의 전체 상품 리스트
 		List<ProductVO> productList = sellerService.readAllProduct();
 		logger.info("productList size: " + productList.size());
 		// 전체 상품 리스트를 Model 객체에 넣어서 View(jsp)에 전달
@@ -109,7 +109,7 @@ public class SellerController {
 	/*----------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------*/
-	
+/*	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public String mainHome(Model model) {
 		logger.info("main 컨트롤러 실행");
@@ -132,18 +132,18 @@ public class SellerController {
 		logger.info("length : " + length);
 		logger.info("numOfPage : "+numOfPage);
 		logger.info("remainder : "+remainder);
-		/*logger.info(productList.get(0).getP_name());*/
+		logger.info(productList.get(0).getP_name());
 		
 		
 		return "UI/sudo_index";
 		
 	} // end sellerHome() -> 판매자 홈에서 상품 리스트를 보여주는 역할
-	
+*/	
 	
 	/*----------------------------------------------------------------------------*/
 	
 	// TODO : ProductController로 이동
-	
+
 	@RequestMapping(value="pDetail", method=RequestMethod.GET)
 	public String product_Detail(int p_no, String s_id, String p_name, Model model) {
 		

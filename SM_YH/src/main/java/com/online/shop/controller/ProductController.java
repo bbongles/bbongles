@@ -84,7 +84,7 @@ public class ProductController {
 		}
 		
 		/*return "redirect:pList";*/
-		return "redirect:main";
+		return "redirect:../";
 	} // end registerPOST()
 	
 	/*----------------------------------------------------------------------------*/
@@ -97,16 +97,15 @@ public class ProductController {
 		int iResult = productService.deleteImageByPno(p_no);
 		int pResult = productService.deleteProductByPno(p_no);
 		
-		
+		/*
 		if (oResult == 1 && iResult == 1 && pResult == 1) {
 			attr.addFlashAttribute("delete_result", "success");
 		} else {
 			attr.addFlashAttribute("delete_result", "fail");
 		}
 		attr.addFlashAttribute("p_no", p_no);
-		
-		/*return "redirect:pList";*/
-		return "redirect:main";
+		*/
+		return "redirect:../";
 	}
 	/*----------------------------------------------------------------------------*/
 

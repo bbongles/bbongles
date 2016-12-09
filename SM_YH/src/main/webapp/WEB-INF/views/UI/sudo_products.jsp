@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,38 +52,38 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="index.html" class="logo pull-left"><img src="<c:url value='/resources/themes/images/logo.png' />" class="site_logo" alt=""></a>
+					<a href="./" class="logo pull-left"><img src="<c:url value='/resources/themes/images/logo.png' />" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./products.html">Home / Deco</a>					
+							<li><a href="./products">Home / Deco</a>					
 								<ul>
-									<li><a href="./products.html">furniture</a></li>	<!-- 가구 -->									
-									<li><a href="./products.html">pottery</a></li>		<!-- 도자기 -->		
-									<li><a href="./products.html">lamp</a></li>			<!-- 조명 -->									
+									<li><a href="./products">furniture</a></li>	<!-- 가구 -->									
+									<li><a href="./products">pottery</a></li>		<!-- 도자기 -->		
+									<li><a href="./products">lamp</a></li>			<!-- 조명 -->									
 								</ul>
 							</li>															
-							<li><a href="./products.html">Candle / Diffuser</a>
+							<li><a href="./products">Candle / Diffuser</a>
 								<ul>
-									<li><a href="./products.html">candle</a></li>			<!-- 양초 -->										
-									<li><a href="./products.html">diffuser</a></li>			<!-- 디퓨저 -->
-									<li><a href="./products.html">aromatic oils</a></li>	<!-- 아로마오일 -->									
+									<li><a href="./products">candle</a></li>			<!-- 양초 -->										
+									<li><a href="./products">diffuser</a></li>			<!-- 디퓨저 -->
+									<li><a href="./products">aromatic oils</a></li>	<!-- 아로마오일 -->									
 								</ul>		
 								</li>	
-							<li><a href="./products.html">Art / Fancy</a>
+							<li><a href="./products">Art / Fancy</a>
 								<ul>									
-									<li><a href="./products.html">picture</a></li>		<!-- 사진 -->
-									<li><a href="./products.html">fancy</a></li>		<!-- 문구 -->
-									<li><a href="./products.html">paper</a></li>		<!-- 페이퍼 -->
+									<li><a href="./products">picture</a></li>		<!-- 사진 -->
+									<li><a href="./products">fancy</a></li>		<!-- 문구 -->
+									<li><a href="./products">paper</a></li>		<!-- 페이퍼 -->
 								</ul>
 							</li>							
-							<li><a href="./products.html">Jewellery</a>
+							<li><a href="./products">Jewellery</a>
 								<ul>									
-									<li><a href="./products.html">earring</a></li>		<!-- 귀걸이 -->
-									<li><a href="./products.html">necklace</a></li>		<!-- 목걸이 -->
-									<li><a href="./products.html">ring</a></li>			<!-- 반지 -->
+									<li><a href="./products">earring</a></li>		<!-- 귀걸이 -->
+									<li><a href="./products">necklace</a></li>		<!-- 목걸이 -->
+									<li><a href="./products">ring</a></li>			<!-- 반지 -->
 								</ul>
 							</li>
-							<li><a href="./products.html">Event</a></li>
+							<li><a href="./products">Event</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -110,6 +111,25 @@
 						
 						
 						<!-- ********** -->
+						<!-- \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ -->
+						
+						<c:forEach begin="0" end="8" varStatus="status" items="${productList }"><!-- 4 개씩 출력 -->
+								<li class="span3">
+								<div class="product-box">
+									<span class="sale_tag"> #index : ${4 * page + status.index} </span>
+										<p><a href="pDetail?p_no=${productList[4 * page + status.index].p_no }"><img src="${productList[4 * page + status.index].p_img }" /></a></p>
+										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="title">${productList[4 * page + status.index].p_name }</a><br>
+										<a href="pDetail?p_no=${productList[4 * page + status.index].p_no }" class="category">${productList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+										<p class="price"><fmt:formatNumber value="${productList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p>	
+									</div>
+								</li>
+						</c:forEach>
+						
+						
+						
+						<!-- \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ -->
+						
+							<%-- 
 							<li class="span3">
 								<div class="product-box">
 									<span class="sale_tag"></span>												
@@ -136,6 +156,7 @@
 									<p class="price">$341</p>
 								</div>
 							</li>
+							
 							<li class="span3">
 								<div class="product-box">												
 									<span class="sale_tag"></span>
@@ -161,6 +182,7 @@
 									<p class="price">$61</p>
 								</div>
 							</li>
+							
 							<li class="span3">
 								<div class="product-box">												
 									<a href="product_detail.html"><img alt="" src="<c:url value='/resources/themes/images/ladies/3.jpg' />"></a><br/>
@@ -185,7 +207,7 @@
 									<p class="price">$261</p>
 								</div>
 							</li>
-							
+							 --%>
 							
 					<!-- ********** -->	
 						</ul>	
@@ -325,6 +347,7 @@
 							<li><a href="#">Order History</a></li>
 							<li><a href="#">Wish List</a></li>
 							<li><a href="#">Newsletter</a></li>
+							<li><a href="seller/pRegister">pRegister</a></li>
 						</ul>
 					</div>
 					<div class="span5">

@@ -119,28 +119,28 @@ $(function() {
 		var p_cate1 = $(this).val();
 		temp.children().remove();
 		temp.append('<option value="none">--------</option>');
-
-		if (p_cate1 == 'homedeco') {
-			temp.append('<option value="furni">가구</option>');
-			temp.append('<option value="cera">도자기</option>');
+		
+		if (p_cate1 == 'Home / Deco') {
+			temp.append('<option value="furniture">가구</option>');
+			temp.append('<option value="pottery">도자기</option>');
 			temp.append('<option value="lamp">조명</option>');
 		}
 
-		if (p_cate1 == 'candlediffu') {
+		if (p_cate1 == 'Candle / Diffuser') {
 			temp.append('<option value="candle">캔들</option>');
-			temp.append('<option value="diffu">디퓨저</option>');
-			temp.append('<option value="aroma">아로마오일</option>');
+			temp.append('<option value="diffuser">디퓨저</option>');
+			temp.append('<option value="aromatic oils">아로마오일</option>');
 		}
 
-		if (p_cate1 == 'artfancy') {
-			temp.append('<option value="pic">사진</option>');
+		if (p_cate1 == 'Art / Fancy') {
+			temp.append('<option value="picture">사진</option>');
 			temp.append('<option value="fancy">문구</option>');
 			temp.append('<option value="paper">페이퍼</option>');
 		}
 
-		if (p_cate1 == 'jewelry') {
-			temp.append('<option value="ear">귀걸이</option>');
-			temp.append('<option value="neck">목걸이</option>');
+		if (p_cate1 == 'Jewellery') {
+			temp.append('<option value="earring">귀걸이</option>');
+			temp.append('<option value="necklace">목걸이</option>');
 			temp.append('<option value="ring">반지</option>');
 		}
 
@@ -278,7 +278,8 @@ var x=0;
    $(function() {
 	   $("#btn_insert").click(function() {
 		  if (confirm("정말 등록하시겠습니까?") == true) {
-			  $("#pRegister").submit();
+			  //$("#pRegister").submit();
+			  $("#pRegister").find('[type="submit"]').trigger('click');
 		  } 
 	   });
 	   $("#btn_reset").click(function() {
@@ -353,40 +354,40 @@ var x=0;
 	<div id="wrapper" class="container">
 		<section class="navbar main-menu">
 			<div class="navbar-inner main-menu">
-				<a href="index.html" class="logo pull-left">
+				<a href="../" class="logo pull-left">
 				<img src="<c:url value='/resources/themes/images/logo.png' />"
 					class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./products.html">Home / Deco</a>					
+							<li><a href="./products">Home / Deco</a>					
 								<ul>
-									<li><a href="./products.html">furniture</a></li>	<!-- 가구 -->									
-									<li><a href="./products.html">pottery</a></li>		<!-- 도자기 -->		
-									<li><a href="./products.html">lamp</a></li>			<!-- 조명 -->									
+									<li><a href="./products">furniture</a></li>	<!-- 가구 -->									
+									<li><a href="./products">pottery</a></li>		<!-- 도자기 -->		
+									<li><a href="./products">lamp</a></li>			<!-- 조명 -->									
 								</ul>
 							</li>															
-							<li><a href="./products.html">Candle / Diffuser</a>
+							<li><a href="./products">Candle / Diffuser</a>
 								<ul>
-									<li><a href="./products.html">candle</a></li>			<!-- 양초 -->										
-									<li><a href="./products.html">diffuser</a></li>			<!-- 디퓨저 -->
-									<li><a href="./products.html">aromatic oils</a></li>	<!-- 아로마오일 -->									
+									<li><a href="./products">candle</a></li>			<!-- 양초 -->										
+									<li><a href="./products">diffuser</a></li>			<!-- 디퓨저 -->
+									<li><a href="./products">aromatic oils</a></li>	<!-- 아로마오일 -->									
 								</ul>		
 								</li>	
-							<li><a href="./products.html">Art / Fancy</a>
+							<li><a href="./products">Art / Fancy</a>
 								<ul>									
-									<li><a href="./products.html">picture</a></li>		<!-- 사진 -->
-									<li><a href="./products.html">fancy</a></li>		<!-- 문구 -->
-									<li><a href="./products.html">paper</a></li>		<!-- 페이퍼 -->
+									<li><a href="./products">picture</a></li>		<!-- 사진 -->
+									<li><a href="./products">fancy</a></li>		<!-- 문구 -->
+									<li><a href="./products">paper</a></li>		<!-- 페이퍼 -->
 								</ul>
 							</li>							
-							<li><a href="./products.html">Jewellery</a>
+							<li><a href="./products">Jewellery</a>
 								<ul>									
-									<li><a href="./products.html">earring</a></li>		<!-- 귀걸이 -->
-									<li><a href="./products.html">necklace</a></li>		<!-- 목걸이 -->
-									<li><a href="./products.html">ring</a></li>			<!-- 반지 -->
+									<li><a href="./products">earring</a></li>		<!-- 귀걸이 -->
+									<li><a href="./products">necklace</a></li>		<!-- 목걸이 -->
+									<li><a href="./products">ring</a></li>			<!-- 반지 -->
 								</ul>
 							</li>
-							<li><a href="./products.html">Event</a></li>
+							<li><a href="./products">Event</a></li>
 						</ul>
 					</nav>
 			</div>
@@ -544,7 +545,7 @@ var x=0;
 																	
 													<!-- <label>대표 이미지</label><br/> -->
 													<div class="form-inline">
-														<input class="input-xlarge" type="text" class="i_set" id="0_img" name="p_img" placeholder="메인 이미지 "/>
+														<input class="input-xlarge" type="text" class="i_set" id="0_img" name="p_img" placeholder="메인 이미지 " required/>
 														
 														<!-- **레이어 팝업** -->
 	
@@ -631,6 +632,8 @@ var x=0;
 											 
 											<br>
 										</div>
+											
+											<button type="submit" class="hide"></button><!-- ***** required 속성을 위해서 form 안에서 submit이 작동되게 해야한다. ***** -->
 													
 									</form><!--  End -->
 
@@ -644,7 +647,7 @@ var x=0;
 												 -->
 												 <input tabindex="9" id="btn_insert" class="btn btn-inverse large" type="button" value="Commit">
 												<input tabindex="9" id="btn_reset" class="btn btn-inverse large" type="button" value="Reset">
-												<input onclick="location.href='main'" class="btn btn-inverse" type="button" id="gotoList" value="Home" />
+												<input onclick="location.href='../'" class="btn btn-inverse" type="button" id="gotoList" value="Home" />
 												
 											</div>	<br/>
 											
@@ -724,6 +727,7 @@ var x=0;
 						<li><a href="#">Order History</a></li>
 						<li><a href="#">Wish List</a></li>
 						<li><a href="#">Newsletter</a></li>
+						<li><a href="#">pRegister</a></li>
 					</ul>
 				</div>
 				<div class="span5">

@@ -68,38 +68,38 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="index.html" class="logo pull-left"><img src="<c:url value='/resources/themes/images/logo.png' />" class="site_logo" alt=""></a>
+					<a href="./" class="logo pull-left"><img src="<c:url value='/resources/themes/images/logo.png' />" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./products.html">Home / Deco</a>					
+							<li><a href="./products">Home / Deco</a>					
 								<ul>
-									<li><a href="./products.html">furniture</a></li>	<!-- 가구 -->									
-									<li><a href="./products.html">pottery</a></li>		<!-- 도자기 -->		
-									<li><a href="./products.html">lamp</a></li>			<!-- 조명 -->									
+									<li><a href="./products">furniture</a></li>	<!-- 가구 -->									
+									<li><a href="./products">pottery</a></li>		<!-- 도자기 -->		
+									<li><a href="./products">lamp</a></li>			<!-- 조명 -->									
 								</ul>
 							</li>															
-							<li><a href="./products.html">Candle / Diffuser</a>
+							<li><a href="./products">Candle / Diffuser</a>
 								<ul>
-									<li><a href="./products.html">candle</a></li>			<!-- 양초 -->										
-									<li><a href="./products.html">diffuser</a></li>			<!-- 디퓨저 -->
-									<li><a href="./products.html">aromatic oils</a></li>	<!-- 아로마오일 -->									
+									<li><a href="./products">candle</a></li>			<!-- 양초 -->										
+									<li><a href="./products">diffuser</a></li>			<!-- 디퓨저 -->
+									<li><a href="./products">aromatic oils</a></li>	<!-- 아로마오일 -->									
 								</ul>		
 								</li>	
-							<li><a href="./products.html">Art / Fancy</a>
+							<li><a href="./products">Art / Fancy</a>
 								<ul>									
-									<li><a href="./products.html">picture</a></li>		<!-- 사진 -->
-									<li><a href="./products.html">fancy</a></li>		<!-- 문구 -->
-									<li><a href="./products.html">paper</a></li>		<!-- 페이퍼 -->
+									<li><a href="./products">picture</a></li>		<!-- 사진 -->
+									<li><a href="./products">fancy</a></li>		<!-- 문구 -->
+									<li><a href="./products">paper</a></li>		<!-- 페이퍼 -->
 								</ul>
 							</li>							
-							<li><a href="./products.html">Jewellery</a>
+							<li><a href="./products">Jewellery</a>
 								<ul>									
-									<li><a href="./products.html">earring</a></li>		<!-- 귀걸이 -->
-									<li><a href="./products.html">necklace</a></li>		<!-- 목걸이 -->
-									<li><a href="./products.html">ring</a></li>			<!-- 반지 -->
+									<li><a href="./products">earring</a></li>		<!-- 귀걸이 -->
+									<li><a href="./products">necklace</a></li>		<!-- 목걸이 -->
+									<li><a href="./products">ring</a></li>			<!-- 반지 -->
 								</ul>
 							</li>
-							<li><a href="./products.html">Event</a></li>
+							<li><a href="./products">Event</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -290,9 +290,9 @@
 												</ul>
 											</div>
 								
-											<c:if test="${numOfPage >= 2}">
+									<c:if test="${numOfPage >= 2}">
 											<!-- 두번째 페이지 이상 ~ -->
-											<%-- <c:forEach begin="1" end="${numOfPage-1 }" var="page"> --%>
+										<c:if test="${numOfPage >= 3}">
 												<c:forEach begin="1" end="${numOfPage-2 }" var="page">
 												<div class="item">		
 													<ul class="thumbnails">	
@@ -314,9 +314,10 @@
 													</ul>
 												</div>
 											</c:forEach>
-											
+										</c:if>	
 							
 											<!-- 마지막 페이지 -->
+										<c:if test="${remainder != 0}">	
 											<c:forEach begin="${numOfPage-1}" end="${numOfPage-1}" var="page">
 												<div class="item">		
 													<ul class="thumbnails">	
@@ -334,12 +335,35 @@
 																</div>
 															</li>
 														</c:forEach>
-														
 													</ul>
 												</div>
 											</c:forEach> 
-											
-											</c:if>
+										</c:if>		
+										<c:if test="${remainder == 0}">	
+											<c:forEach begin="${numOfPage-1}" end="${numOfPage-1}" var="page">
+												<div class="item">		
+													<ul class="thumbnails">	
+														<%-- <c:forEach begin="0" end="4" var="i"> --%>
+															<%-- ${productList.list[4 * page + i] } --%>
+														<c:forEach begin="0" end="3" varStatus="status" items="${relativeList }"><!-- 4 개씩 출력 -->
+															<li class="span3">
+															<div class="product-box">
+																<span class="sale_tag"><%--  #index : ${4 * page + status.index} --%> </span>
+																	<p><a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }"><img src="${relativeList[4 * page + status.index].p_img }" /></a></p>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="title">${relativeList[4 * page + status.index].p_name }</a><br>
+																	<a href="pDetail?p_no=${relativeList[4 * page + status.index].p_no }" class="category">${relativeList[4 * page + status.index].p_cate1}</a><!-- 카테고리 -->
+																	<p class="price"><fmt:formatNumber value="${relativeList[4 * page + status.index].p_price}" groupingUsed="true"/> 원</p> 
+																	
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+												</div>
+											</c:forEach> 
+										</c:if>	
+										
+										
+									</c:if>
 					<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->					
 									</div>
 								</div>
@@ -471,6 +495,7 @@
 							<li><a href="#">Order History</a></li>
 							<li><a href="#">Wish List</a></li>
 							<li><a href="#">Newsletter</a></li>
+							<li><a href="seller/pRegister">pRegister</a></li>
 						</ul>
 					</div>
 					<div class="span5">
@@ -517,7 +542,7 @@
 		    $('#delProduct').click(function() {
 		    	var result = confirm('정말 삭제하시겠습니까?');
 		    	if (result == true) {
-		    		$('#frm').attr('action', 'pDelete');
+		    		$('#frm').attr('action', 'seller/pDelete');
 		    		$('#frm').attr('method', 'post');
 		    		$('#frm').submit();
 		    	}
@@ -525,7 +550,7 @@
 		    
 	    	// 리스트
 		    $('#gotoList').click(function() {
-		    	location = 'main';
+		    	location = './';
 		    });
 	    	
 	    	// 옵션 없을시 hidden
